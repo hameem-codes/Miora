@@ -1,0 +1,944 @@
+/* ==========================================================================
+   Miora – My Reports Screen Styles
+   Exact 1:1 reproduction of the visual reference screenshot (1024x576)
+   ========================================================================== */
+
+/* Main outer container containing left sidebar and right reports content */
+.miora-reports-shell {
+  display: flex;
+  min-height: 100vh;
+  background: #fdf5f7;
+  color: #271218;
+  font-family: var(--sans, 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+  overflow-x: hidden;
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* --------------------------------------------------------------------------
+   1. Left Sidebar (Matching other patient screens & Image 2)
+   -------------------------------------------------------------------------- */
+.miora-reports-sidebar {
+  width: 163px;
+  min-width: 163px;
+  max-width: 163px;
+  background: #fdf4f6;
+  border-right: 1px solid #f3dde3;
+  display: flex;
+  flex-direction: column;
+  padding: 18px 12px 16px 16px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  box-sizing: border-box;
+  z-index: 40;
+}
+
+.reports-sidebar-brand {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 16px;
+}
+
+.reports-brand-link {
+  display: inline-flex;
+  align-items: baseline;
+  text-decoration: none;
+}
+
+.reports-brand-script {
+  font-family: var(--serif, 'Playfair Display', Georgia, serif);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 29px;
+  letter-spacing: -0.02em;
+  color: #d93c75;
+  line-height: 1;
+}
+
+.reports-brand-tagline {
+  font-size: 9.5px;
+  color: #2d1820;
+  font-weight: 600;
+  margin-top: 5px;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+.reports-sidebar-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.reports-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.reports-nav-item {
+  margin: 0;
+  padding: 0;
+}
+
+.reports-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  color: #3f2d34;
+  font-size: 11.5px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 120ms ease;
+  background: transparent;
+}
+
+.reports-nav-link:hover {
+  background: #fae6ed;
+  color: #c73566;
+}
+
+.reports-nav-link.is-active {
+  background: #fde4ed;
+  color: #c73566;
+  font-weight: 600;
+}
+
+.reports-nav-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.reports-nav-label {
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+}
+
+/* Sidebar Footer (Profile, Settings) */
+.reports-sidebar-footer {
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+/* --------------------------------------------------------------------------
+   2. Main Content Viewport
+   -------------------------------------------------------------------------- */
+.miora-reports-viewport {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: radial-gradient(circle at 82% 10%, #fdf0f4 0%, #fef7f6 45%, #fdf5f7 100%);
+  padding: 16px 24px 20px 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+/* Bottom floral wave */
+.reports-bottom-wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 52px;
+  background: radial-gradient(ellipse at 50% 100%, rgba(254, 218, 230, 0.45) 0%, rgba(253, 245, 247, 0) 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* --------------------------------------------------------------------------
+   3. Header Area
+   -------------------------------------------------------------------------- */
+.reports-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom: 14px;
+}
+
+.reports-header-text {
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+  max-width: 480px;
+}
+
+.reports-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: #6c5a62;
+  margin-bottom: 6px;
+}
+
+.reports-breadcrumb-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #5c4951;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.reports-breadcrumb-link:hover {
+  color: #c73566;
+}
+
+.reports-breadcrumb-sep {
+  font-size: 11px;
+  color: #8c7880;
+}
+
+.reports-breadcrumb-current {
+  color: #241118;
+  font-weight: 600;
+}
+
+.reports-title {
+  font-family: var(--serif, 'Playfair Display', Georgia, serif);
+  font-size: 26px;
+  font-weight: 700;
+  color: #200f16;
+  letter-spacing: -0.02em;
+  margin: 0 0 4px 0;
+  line-height: 1.15;
+}
+
+.reports-subtitle {
+  font-size: 11.5px;
+  color: #5c4a52;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Mother and Baby Illustration Banner in Upper-Right Corner */
+.reports-header-illustration-wrap {
+  position: absolute;
+  top: -8px;
+  right: 155px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.reports-header-illustration {
+  height: 112px;
+  width: auto;
+  object-fit: contain;
+  opacity: 0.98;
+}
+
+/* User Controls (Bell + Profile) in Top Right */
+.reports-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 10;
+  margin-top: 2px;
+}
+
+.reports-icon-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid #f2d9df;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4b3941;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(180, 100, 120, 0.05);
+  position: relative;
+  transition: all 120ms ease;
+}
+
+.reports-icon-btn:hover {
+  background: #fae8ed;
+  color: #c73566;
+}
+
+.reports-notif-dot {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #c73566;
+  border: 1.5px solid #fff;
+}
+
+.reports-profile-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 20px;
+  transition: opacity 120ms ease;
+}
+
+.reports-profile-btn:hover {
+  opacity: 0.85;
+}
+
+.reports-avatar-badge {
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  background: #ec7e9e;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 12.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reports-profile-name {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #271218;
+}
+
+/* --------------------------------------------------------------------------
+   3. Five Navigation Tabs in One Horizontal Row
+   -------------------------------------------------------------------------- */
+.reports-tabs-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  z-index: 5;
+  overflow-x: auto;
+}
+
+.reports-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5.5px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 120ms ease;
+  white-space: nowrap;
+  border: 1px solid #ebd4dd;
+  background: #ffffff;
+  color: #3b2830;
+  box-shadow: 0 1px 2px rgba(180, 100, 120, 0.03);
+}
+
+.reports-tab-btn:hover {
+  background: #fdf0f4;
+  color: #c73566;
+  border-color: #e5c3cd;
+}
+
+.reports-tab-btn.is-active {
+  background: #e72c73;
+  color: #ffffff;
+  border-color: #e72c73;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(231, 44, 115, 0.25);
+}
+
+.reports-tab-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+}
+
+/* --------------------------------------------------------------------------
+   4. Dashboard Layout: 3 Columns (Left 310px, Centre 285px, Right 196px)
+   -------------------------------------------------------------------------- */
+.reports-dashboard-body {
+  display: flex;
+  gap: 12px;
+  position: relative;
+  z-index: 5;
+}
+
+.reports-left-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.reports-row-1 {
+  display: grid;
+  grid-template-columns: 310px 1fr;
+  gap: 12px;
+}
+
+.reports-row-2 {
+  display: grid;
+  grid-template-columns: 180px 1.22fr 1.05fr;
+  gap: 12px;
+}
+
+.reports-right-column {
+  width: 196px;
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Card Basics
+   -------------------------------------------------------------------------- */
+.reports-card {
+  background: #ffffff;
+  border: 1px solid #f2dde4;
+  border-radius: 14px;
+  padding: 14px 16px;
+  box-shadow: 0 1px 6px rgba(216, 49, 91, 0.03);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.reports-card-header {
+  margin-bottom: 8px;
+}
+
+.reports-card-title-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.reports-card-title-icon {
+  color: #d6336c;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reports-card-title {
+  font-family: var(--serif, 'Playfair Display', Georgia, serif);
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #241118;
+  letter-spacing: -0.01em;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.reports-card-subtitle {
+  font-size: 10.5px;
+  color: #78656d;
+  margin-top: 2px;
+  margin-bottom: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Card 1: Latest Screening Result
+   -------------------------------------------------------------------------- */
+.latest-screening-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.screening-gauge-wrap {
+  width: 95px;
+  height: 95px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.screening-gauge-svg {
+  width: 95px;
+  height: 95px;
+  transform: rotate(-90deg);
+}
+
+.screening-gauge-track {
+  fill: none;
+  stroke: #fae2eb;
+  stroke-width: 8;
+}
+
+.screening-gauge-fill {
+  fill: none;
+  stroke: url(#screeningGradient);
+  stroke-width: 8;
+  stroke-linecap: round;
+}
+
+.screening-gauge-center {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.screening-score-num {
+  font-family: var(--serif, 'Playfair Display', Georgia, serif);
+  font-size: 22px;
+  font-weight: 700;
+  color: #241118;
+  letter-spacing: -0.02em;
+}
+
+.screening-score-label {
+  font-size: 9.5px;
+  color: #79666f;
+  margin-top: 2px;
+  font-weight: 500;
+}
+
+.screening-details-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.screening-risk-pill {
+  display: inline-block;
+  background: #fdf0f4;
+  color: #c73566;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2.5px 8px;
+  border-radius: 10px;
+  border: 1px solid #fae1e9;
+}
+
+.screening-desc-text {
+  font-size: 10.5px;
+  line-height: 1.4;
+  color: #4f3d45;
+  margin: 0;
+}
+
+.screening-discuss-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #d6336c;
+  color: #ffffff;
+  border: none;
+  border-radius: 18px;
+  padding: 5.5px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 120ms ease;
+  margin-top: 2px;
+  box-shadow: 0 2px 5px rgba(214, 51, 108, 0.22);
+  text-decoration: none;
+}
+
+.screening-discuss-btn:hover {
+  background: #bf275b;
+}
+
+/* --------------------------------------------------------------------------
+   Card 2: Emotional Well-being Trend (Chart)
+   -------------------------------------------------------------------------- */
+.trend-chart-wrap {
+  width: 100%;
+  height: 122px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.trend-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.trend-grid-line {
+  stroke: #f3e5eb;
+  stroke-width: 1;
+}
+
+.trend-axis-label {
+  fill: #8a7880;
+  font-size: 9.5px;
+  font-family: var(--sans, 'DM Sans', sans-serif);
+}
+
+.trend-line {
+  fill: none;
+  stroke: #e7437f;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.trend-point {
+  fill: #ffffff;
+  stroke: #e7437f;
+  stroke-width: 1.8;
+  cursor: pointer;
+}
+
+/* --------------------------------------------------------------------------
+   Card 3: Download Reports (Right Column Tall Card)
+   -------------------------------------------------------------------------- */
+.card-download-reports {
+  height: auto;
+  min-height: 240px;
+}
+
+.download-reports-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.download-report-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 3px;
+  border-radius: 6px;
+  transition: background 120ms ease;
+}
+
+.download-report-item:hover {
+  background: #fdf5f7;
+}
+
+.report-file-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.report-icon-box {
+  width: 25px;
+  height: 25px;
+  border-radius: 6px;
+  background: #fdf0f4;
+  border: 1px solid #fae1e9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c73566;
+  flex-shrink: 0;
+}
+
+.report-text-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.report-file-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: #241118;
+  line-height: 1.25;
+}
+
+.report-file-meta {
+  font-size: 10px;
+  color: #7d6a72;
+  margin-top: 1px;
+}
+
+.report-download-btn {
+  background: none;
+  border: none;
+  color: #b63a64;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 120ms ease;
+}
+
+.report-download-btn:hover {
+  background: #fae4ec;
+  color: #d6336c;
+}
+
+/* --------------------------------------------------------------------------
+   Card 4: Key Insights
+   -------------------------------------------------------------------------- */
+.insights-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.insight-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: #3b2830;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #fdf2f6;
+}
+
+.insight-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.insight-icon {
+  color: #d6336c;
+  width: 15px;
+  height: 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.insight-text-group {
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.insight-label {
+  font-weight: 700;
+  color: #241118;
+}
+
+.insight-val {
+  color: #4b3a42;
+  margin-left: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   Card 5: Assessment Summary
+   -------------------------------------------------------------------------- */
+.summary-bars-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.summary-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.summary-bar-label {
+  width: 105px;
+  font-size: 11px;
+  font-weight: 500;
+  color: #3b2830;
+  white-space: nowrap;
+}
+
+.summary-bar-track {
+  flex: 1;
+  height: 6px;
+  background: #fae2eb;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.summary-bar-fill {
+  height: 100%;
+  background: #e7437f;
+  border-radius: 3px;
+}
+
+.summary-bar-val {
+  width: 28px;
+  text-align: right;
+  font-size: 11px;
+  font-weight: 600;
+  color: #241118;
+}
+
+/* --------------------------------------------------------------------------
+   Card 6: Next Steps
+   -------------------------------------------------------------------------- */
+.next-steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 3px;
+}
+
+.next-step-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 8px;
+  border-radius: 8px;
+  border: 1px solid #fae5ee;
+  background: #fffbfe;
+  color: #2b1720;
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 120ms ease;
+}
+
+.next-step-item:hover {
+  background: #fae7ee;
+  border-color: #f2cad9;
+  color: #b62d5b;
+}
+
+.next-step-left {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.next-step-icon {
+  color: #d6336c;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.next-step-chevron {
+  color: #948088;
+}
+
+/* --------------------------------------------------------------------------
+   Other Functional Tabs View
+   -------------------------------------------------------------------------- */
+.reports-tab-view {
+  background: #ffffff;
+  border: 1px solid #f2dde4;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 1px 6px rgba(216, 49, 91, 0.03);
+}
+
+.tab-view-heading {
+  font-family: var(--serif, 'Playfair Display', Georgia, serif);
+  font-size: 18px;
+  font-weight: 700;
+  color: #241118;
+  margin: 0 0 6px 0;
+}
+
+.tab-view-sub {
+  font-size: 12px;
+  color: #6c5a62;
+  margin: 0 0 16px 0;
+}
+
+/* Empty State */
+.reports-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+  background: #ffffff;
+  border: 1px dashed #f0ccd8;
+  border-radius: 14px;
+}
+
+.empty-state-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #fdf0f4;
+  color: #d6336c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.empty-state-title {
+  font-family: var(--serif, 'Playfair Display', Georgia, serif);
+  font-size: 16px;
+  font-weight: 700;
+  color: #241118;
+  margin: 0 0 4px 0;
+}
+
+.empty-state-desc {
+  font-size: 12px;
+  color: #6e5c65;
+  max-width: 400px;
+  line-height: 1.45;
+  margin: 0 0 16px 0;
+}
+
+.empty-state-btn {
+  background: #d6336c;
+  color: #ffffff;
+  border: none;
+  border-radius: 18px;
+  padding: 7px 18px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 120ms ease;
+}
+
+.empty-state-btn:hover {
+  background: #bf275b;
+}
+
+/* Download Toast Notification */
+.reports-toast-banner {
+  position: fixed;
+  bottom: 20px;
+  right: 24px;
+  padding: 8px 16px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  z-index: 1000;
+  box-shadow: 0 6px 20px rgba(120, 30, 60, 0.14);
+}
+
+.reports-toast-banner.is-success {
+  background: #ffffff;
+  border: 1px solid #73c991;
+  color: #1b6335;
+}
+
+.reports-toast-banner.is-error {
+  background: #fff0f2;
+  border: 1px solid #f29da9;
+  color: #b71c35;
+}

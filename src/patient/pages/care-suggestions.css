@@ -1,0 +1,1063 @@
+/* ==========================================================================
+   Miora – Care Suggestions Screen Styles
+   Pixel-accurate reproduction of the visual reference screenshot (1024x576)
+   ========================================================================== */
+
+/* Main outer shell */
+.miora-care-shell {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  min-height: 576px;
+  background: #fdf2f7;
+  color: #271218;
+  font-family: var(--sans, 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* --------------------------------------------------------------------------
+   1. Left Sidebar (Exact width: 160px)
+   -------------------------------------------------------------------------- */
+.miora-care-sidebar {
+  width: 160px;
+  min-width: 160px;
+  max-width: 160px;
+  background: #fdf4f6;
+  border-right: 1px solid #f3dde3;
+  display: flex;
+  flex-direction: column;
+  padding: 18px 12px 14px 16px;
+  position: relative;
+  height: 100vh;
+  box-sizing: border-box;
+  z-index: 30;
+}
+
+.care-sidebar-brand {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 14px;
+}
+
+.care-brand-link {
+  display: inline-flex;
+  align-items: baseline;
+  text-decoration: none;
+}
+
+.care-brand-script {
+  font-family: var(--serif, 'Playfair Display', Georgia, serif);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 32px;
+  letter-spacing: -0.025em;
+  color: #d8286a;
+  line-height: 1;
+}
+
+.care-brand-tagline {
+  font-size: 10px;
+  color: #2c1720;
+  font-weight: 600;
+  margin-top: 5px;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+.care-sidebar-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.care-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5px;
+}
+
+.care-nav-item {
+  margin: 0;
+  padding: 0;
+}
+
+.care-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 6.5px 10px;
+  border-radius: 10px;
+  color: #3b2731;
+  font-size: 11.5px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 120ms ease;
+  background: transparent;
+}
+
+.care-nav-link:hover {
+  background: #fae6ed;
+  color: #c73566;
+}
+
+.care-nav-link.is-active {
+  background: #fde6ee;
+  color: #dc266e;
+  font-weight: 600;
+}
+
+.care-nav-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+}
+
+.care-nav-label {
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+}
+
+/* Sidebar Footer (Profile, Settings) */
+.care-sidebar-footer {
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+/* --------------------------------------------------------------------------
+   2. Main Content Viewport
+   -------------------------------------------------------------------------- */
+.miora-care-viewport {
+  flex: 1;
+  min-width: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: radial-gradient(circle at 75% 15%, #fef3f7 0%, #fff6f8 40%, #fdf2f7 100%);
+  padding: 20px 28px 16px 14px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Bottom decorative wave spanning whole page */
+.care-shell-wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 52px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* --------------------------------------------------------------------------
+   3. Header Area
+   -------------------------------------------------------------------------- */
+.care-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom: 11px;
+  min-height: 82px;
+}
+
+.care-header-text {
+  display: flex;
+  flex-direction: column;
+  z-index: 5;
+  max-width: 440px;
+}
+
+.care-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: #6c5a62;
+  margin-bottom: 7px;
+}
+
+.care-breadcrumb-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #5c4951;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.care-breadcrumb-link:hover {
+  color: #c73566;
+}
+
+.care-breadcrumb-sep {
+  font-size: 11px;
+  color: #8c7880;
+}
+
+.care-breadcrumb-current {
+  color: #241118;
+  font-weight: 600;
+}
+
+.care-title {
+  font-family: var(--serif, 'Playfair Display', Georgia, serif);
+  font-size: 31px;
+  font-weight: 700;
+  color: #1e0d16;
+  letter-spacing: -0.025em;
+  margin: 0 0 5px 0;
+  line-height: 1.1;
+}
+
+.care-subtitle {
+  font-size: 11px;
+  color: #5a4750;
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* Mother and Baby Illustration Banner */
+.care-header-illustration-wrap {
+  position: absolute;
+  top: -24px;
+  left: 450px;
+  width: 250px;
+  height: 145px;
+  z-index: 2;
+  pointer-events: none;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.care-header-illustration {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* User Controls (Bell + Profile) in Top Right */
+.care-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 10;
+  margin-top: 1px;
+}
+
+.care-icon-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid #f2d9df;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #543e47;
+  cursor: pointer;
+  position: relative;
+  transition: all 120ms ease;
+  padding: 0;
+}
+
+.care-icon-btn:hover {
+  background: #fdf5f7;
+  border-color: #e5b8c6;
+  color: #c73566;
+}
+
+.care-notif-dot {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #d93c75;
+}
+
+.care-profile-pill {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 2px 4px 2px 2px;
+  border-radius: 20px;
+}
+
+.care-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #ea6598;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.care-profile-name {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #2d1820;
+}
+
+.care-profile-chevron {
+  font-size: 9px;
+  color: #7b656e;
+}
+
+/* --------------------------------------------------------------------------
+   4. Navigation Tabs Row (5 Tabs)
+   -------------------------------------------------------------------------- */
+.care-tabs-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  z-index: 5;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.care-tabs-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.care-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6.5px 16px;
+  border-radius: 22px;
+  font-size: 11.5px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 140ms ease;
+  border: 1px solid #ebd4de;
+  background: #ffffff;
+  color: #2e1b23;
+  height: 32px;
+  box-sizing: border-box;
+}
+
+.care-tab-btn:hover {
+  background: #fdf0f4;
+  border-color: #e5b6c5;
+}
+
+.care-tab-btn.is-active {
+  background: #dc266e;
+  border-color: #dc266e;
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(220, 38, 110, 0.22);
+}
+
+.care-tab-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  color: #c73566;
+}
+
+.care-tab-btn.is-active .care-tab-icon {
+  color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   5. Main Grid Layout (Left Content 549px + Right Column 250px)
+   -------------------------------------------------------------------------- */
+.care-main-grid {
+  display: grid;
+  grid-template-columns: 549px 250px;
+  gap: 14px;
+  z-index: 5;
+}
+
+.care-main-left {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  width: 549px;
+}
+
+.care-main-right {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  width: 250px;
+}
+
+/* --------------------------------------------------------------------------
+   6. Personalised Care Plan Card
+   -------------------------------------------------------------------------- */
+.care-card-plan {
+  background: #ffffff;
+  border: 1px solid #f2dde4;
+  border-radius: 14px;
+  padding: 13px 18px;
+  box-shadow: 0 2px 8px rgba(230, 180, 195, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  height: 105px;
+  box-sizing: border-box;
+}
+
+.plan-info-left {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  flex: 1;
+}
+
+.plan-badge-icon {
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  border-radius: 8px;
+  background: #fde8ee;
+  border: 1px solid #f9cfdc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #dc266e;
+  margin-top: 1px;
+}
+
+.plan-text-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.plan-title {
+  font-family: var(--serif, 'Playfair Display', Georgia, serif);
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e0d16;
+  margin: 0 0 3px 0;
+  letter-spacing: -0.015em;
+}
+
+.plan-desc {
+  font-size: 11px;
+  color: #58464e;
+  margin: 0;
+  line-height: 1.36;
+  max-width: 320px;
+}
+
+.plan-info-right {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 175px;
+}
+
+.plan-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.plan-meta-icon {
+  width: 17px;
+  height: 17px;
+  min-width: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #dc266e;
+}
+
+.plan-meta-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.plan-meta-label {
+  font-size: 9.5px;
+  color: #75616b;
+  line-height: 1.1;
+  font-weight: 500;
+}
+
+.plan-meta-value {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #1e0d16;
+  line-height: 1.25;
+}
+
+/* --------------------------------------------------------------------------
+   7. Today's Care Suggestions Section
+   -------------------------------------------------------------------------- */
+.care-suggestions-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.suggestions-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.suggestions-section-title {
+  font-family: var(--serif, 'Playfair Display', Georgia, serif);
+  font-size: 17px;
+  font-weight: 700;
+  color: #1e0d16;
+  margin: 0;
+  letter-spacing: -0.015em;
+}
+
+.day-progress-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #fdebf0;
+  border: 1px solid #f6cfdc;
+  color: #dc266e;
+  border-radius: 12px;
+  padding: 3px 9px;
+  font-size: 10.5px;
+  font-weight: 600;
+}
+
+.suggestions-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 173px);
+  gap: 14px;
+}
+
+.suggestion-card {
+  background: #ffffff;
+  border: 1px solid #f2dde4;
+  border-radius: 13px;
+  padding: 8px 8px 10px 8px;
+  box-shadow: 0 2px 6px rgba(230, 180, 195, 0.06);
+  display: flex;
+  flex-direction: column;
+  height: 172px;
+  box-sizing: border-box;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.suggestion-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(220, 150, 175, 0.12);
+}
+
+.suggestion-img-wrap {
+  width: 100%;
+  height: 80px;
+  border-radius: 9px;
+  background: #fde8ee;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 7px;
+}
+
+.suggestion-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.suggestion-card-title {
+  font-family: var(--serif, 'Playfair Display', Georgia, serif);
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #1e0d16;
+  margin: 0 0 2px 0;
+  line-height: 1.2;
+}
+
+.suggestion-card-desc {
+  font-size: 10px;
+  color: #6a5760;
+  margin: 0 0 7px 0;
+  line-height: 1.35;
+  min-height: 27px;
+}
+
+.suggestion-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  height: 28px;
+  padding: 0 10px;
+  border-radius: 18px;
+  font-size: 10.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 120ms ease;
+  border: 1px solid #eed2dc;
+  background: #ffffff;
+  color: #241118;
+  margin-top: auto;
+  box-sizing: border-box;
+}
+
+.suggestion-action-btn:hover {
+  background: #fdf0f4;
+  border-color: #e5b6c5;
+}
+
+.suggestion-action-btn.is-primary {
+  background: #fdeaf1;
+  border-color: #f6cedb;
+  color: #241118;
+  font-weight: 600;
+}
+
+.suggestion-action-btn.is-primary:hover {
+  background: #fcdde6;
+}
+
+.suggestion-btn-play {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  color: #dc266e;
+}
+
+/* --------------------------------------------------------------------------
+   8. Right Column: Your Progress Card
+   -------------------------------------------------------------------------- */
+.care-card-progress {
+  background: #ffffff;
+  border: 1px solid #f2dde4;
+  border-radius: 14px;
+  padding: 13px 14px;
+  box-shadow: 0 2px 8px rgba(230, 180, 195, 0.06);
+  display: flex;
+  flex-direction: column;
+  height: 192px;
+  box-sizing: border-box;
+}
+
+.progress-card-title {
+  font-family: var(--serif, 'Playfair Display', Georgia, serif);
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e0d16;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.015em;
+}
+
+.progress-body-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Circular Gauge Ring */
+.progress-gauge-wrap {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  min-width: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-gauge-svg {
+  transform: rotate(-70deg);
+  width: 90px;
+  height: 90px;
+}
+
+.progress-gauge-track {
+  fill: none;
+  stroke: #fae3ec;
+  stroke-width: 8;
+}
+
+.progress-gauge-bar {
+  fill: none;
+  stroke: #e0286e;
+  stroke-width: 8;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 300ms ease;
+}
+
+.progress-gauge-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none;
+}
+
+.gauge-fraction {
+  font-family: var(--serif, 'Playfair Display', Georgia, serif);
+  font-style: italic;
+  font-size: 21px;
+  font-weight: 700;
+  color: #1e0d16;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.gauge-subtext {
+  font-size: 8.5px;
+  color: #6c5963;
+  line-height: 1.15;
+  margin-top: 3px;
+  font-weight: 500;
+}
+
+/* Checklist of 7 care activities */
+.progress-tasks-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5px;
+  flex: 1;
+}
+
+.progress-task-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  color: #5c4a52;
+  cursor: pointer;
+  user-select: none;
+  padding: 1px 0;
+  transition: color 120ms ease;
+  white-space: nowrap;
+}
+
+.progress-task-item:hover {
+  color: #dc266e;
+}
+
+.progress-task-item.is-completed {
+  color: #1e0d16;
+  font-weight: 500;
+}
+
+.task-check-circle {
+  width: 13px;
+  height: 13px;
+  min-width: 13px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 120ms ease;
+}
+
+.task-check-circle.completed {
+  background: #22c55e;
+  color: #ffffff;
+}
+
+.task-check-circle.pending {
+  border: 1.5px solid #d4b8c5;
+  background: transparent;
+}
+
+.task-name {
+  line-height: 1.2;
+}
+
+/* --------------------------------------------------------------------------
+   9. Right Column: Need More Support? Card
+   -------------------------------------------------------------------------- */
+.care-card-support {
+  background: #ffffff;
+  border: 1px solid #f2dde4;
+  border-radius: 14px;
+  padding: 12px 14px;
+  box-shadow: 0 2px 8px rgba(230, 180, 195, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 106px;
+  box-sizing: border-box;
+}
+
+.support-header-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.support-icon-wrap {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  border-radius: 50%;
+  background: #fdecf1;
+  border: 1px solid #f8d3df;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #dc266e;
+  margin-top: 1px;
+}
+
+.support-text-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.support-title {
+  font-family: var(--serif, 'Playfair Display', Georgia, serif);
+  font-size: 14px;
+  font-weight: 700;
+  color: #1e0d16;
+  margin: 0 0 2px 0;
+  letter-spacing: -0.01em;
+}
+
+.support-desc {
+  font-size: 9.5px;
+  color: #6c5963;
+  margin: 0;
+  line-height: 1.35;
+}
+
+.support-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: auto;
+  align-self: center;
+  padding: 5.5px 18px;
+  border-radius: 20px;
+  font-size: 10.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 120ms ease;
+  border: 1px solid #eed2dc;
+  background: #ffffff;
+  color: #241118;
+  text-decoration: none;
+}
+
+.support-action-btn:hover {
+  background: #fdf0f4;
+  border-color: #dc266e;
+  color: #dc266e;
+}
+
+/* --------------------------------------------------------------------------
+   10. Interactive Modals
+   -------------------------------------------------------------------------- */
+.care-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(36, 17, 24, 0.45);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 16px;
+}
+
+.care-modal-card {
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #f4d0dd;
+  box-shadow: 0 16px 36px rgba(210, 80, 120, 0.18);
+  max-width: 440px;
+  width: 100%;
+  padding: 22px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.care-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: #fdf2f6;
+  border: 1px solid #f2d2dc;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: #5c4a52;
+  cursor: pointer;
+}
+
+.care-modal-close:hover {
+  background: #fae4ec;
+  color: #c73566;
+}
+
+.care-modal-title {
+  font-family: var(--serif, 'Playfair Display', Georgia, serif);
+  font-size: 18px;
+  font-weight: 700;
+  color: #200f16;
+  margin: 0 0 6px 0;
+}
+
+.care-modal-desc {
+  font-size: 11.5px;
+  color: #6a5760;
+  margin: 0 0 16px 0;
+  line-height: 1.45;
+}
+
+.breathing-circle-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.breathing-bubble {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fce5ee 0%, #f7bed2 100%);
+  border: 2px solid #eb8cb1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #b52059;
+  font-weight: 700;
+  font-size: 14px;
+  animation: breatheCycle 8s infinite ease-in-out;
+}
+
+@keyframes breatheCycle {
+  0%, 100% {
+    transform: scale(0.9);
+    box-shadow: 0 0 10px rgba(220, 38, 110, 0.15);
+  }
+  50% {
+    transform: scale(1.22);
+    box-shadow: 0 0 25px rgba(220, 38, 110, 0.35);
+  }
+}
+
+.journal-textarea {
+  width: 100%;
+  height: 90px;
+  border-radius: 10px;
+  border: 1px solid #ebd0db;
+  padding: 10px;
+  font-family: inherit;
+  font-size: 12px;
+  color: #200f16;
+  resize: none;
+  outline: none;
+  box-sizing: border-box;
+  margin-bottom: 14px;
+  background: #fdfbfb;
+}
+
+.journal-textarea:focus {
+  border-color: #dc266e;
+  background: #ffffff;
+}
+
+.care-modal-submit-btn {
+  background: #dc266e;
+  color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 18px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  align-self: flex-end;
+  transition: all 120ms ease;
+}
+
+.care-modal-submit-btn:hover {
+  background: #c21e5e;
+}
+
+/* Dropdown menus */
+.care-dropdown-menu {
+  position: absolute;
+  top: 38px;
+  right: 0;
+  background: #ffffff;
+  border: 1px solid #f2dde4;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(210, 100, 130, 0.15);
+  min-width: 220px;
+  z-index: 50;
+  padding: 8px;
+}
+
+.care-dropdown-header {
+  padding: 6px 10px;
+  font-weight: 600;
+  font-size: 11px;
+  color: #200f16;
+  border-bottom: 1px solid #f7e6ec;
+  margin-bottom: 4px;
+}
+
+.care-dropdown-item {
+  padding: 6px 10px;
+  font-size: 11px;
+  color: #4a3840;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.care-dropdown-item:hover {
+  background: #fdf2f6;
+  color: #c73566;
+}

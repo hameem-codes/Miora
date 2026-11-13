@@ -1,0 +1,617 @@
+/* ==========================================================================
+   Miora – Medical History Screen Styles
+   Exact visual reproduction of the design reference
+   ========================================================================== */
+
+.medhist-page-shell {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #fdf2f6;
+  background-image: 
+    radial-gradient(circle at 85% 15%, #fdecee 0%, transparent 45%),
+    radial-gradient(circle at 20% 80%, #fceed4 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, #fef6f8 0%, #fdf2f6 100%);
+  color: #271218;
+  font-family: var(--sans, 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* --------------------------------------------------------------------------
+   1. Left Sidebar
+   -------------------------------------------------------------------------- */
+.medhist-sidebar {
+  width: 168px;
+  min-width: 168px;
+  max-width: 168px;
+  background: #fdf2f6;
+  border-right: 1px solid #f6dfe5;
+  display: flex;
+  flex-direction: column;
+  padding: 22px 14px 22px 16px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  box-sizing: border-box;
+  z-index: 30;
+}
+
+.medhist-brand-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.medhist-brand-logo {
+  display: inline-flex;
+  align-items: baseline;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.medhist-brand-wordmark {
+  font-family: var(--serif, 'Playfair Display', Georgia, serif);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 28px;
+  letter-spacing: -0.02em;
+  color: #d82b6b;
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.medhist-brand-tagline {
+  font-size: 9.5px;
+  color: #271218;
+  font-weight: 500;
+  margin-top: 3px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.medhist-brand-divider {
+  width: 42px;
+  height: 1px;
+  background: #f198b1;
+  margin-top: 13px;
+  margin-bottom: 18px;
+}
+
+/* Nav Menu */
+.medhist-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.medhist-nav-item {
+  margin: 0;
+  padding: 0;
+}
+
+.medhist-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 6.5px 10px;
+  border-radius: 9px;
+  color: #271218;
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  background: transparent;
+  cursor: pointer;
+  border: none;
+  width: 100%;
+  text-align: left;
+  letter-spacing: -0.01em;
+}
+
+.medhist-nav-link:hover {
+  background: #fae4ec;
+  color: #b62d5b;
+}
+
+.medhist-nav-link.is-active {
+  background: #ffdaee;
+  color: #d82b6b;
+  font-weight: 600;
+}
+
+.medhist-nav-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.medhist-nav-link.is-active .medhist-nav-icon {
+  color: #d82b6b;
+}
+
+/* Sidebar Bottom (Profile, Settings) */
+.medhist-sidebar-footer {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   2. Main Viewport & Header
+   -------------------------------------------------------------------------- */
+.medhist-main-viewport {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 22px 24px 24px;
+  box-sizing: border-box;
+}
+
+.medhist-top-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.medhist-header-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.medhist-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11.5px;
+  color: #63535a;
+  margin-bottom: 10px;
+}
+
+.medhist-breadcrumb-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #63535a;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.medhist-breadcrumb-sep {
+  font-size: 12px;
+  color: #9c8992;
+}
+
+.medhist-breadcrumb-current {
+  color: #271218;
+  font-weight: 600;
+}
+
+.medhist-title {
+  font-family: var(--serif, 'Playfair Display', Georgia, serif);
+  font-size: 30px;
+  font-weight: 700;
+  color: #241118;
+  letter-spacing: -0.015em;
+  margin: 0 0 6px 0;
+  line-height: 1.15;
+}
+
+.medhist-subtitle {
+  font-size: 13px;
+  color: #5c4d55;
+  margin: 0;
+  line-height: 1.35;
+}
+
+/* Header Right: Bell & Profile */
+.medhist-header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 2px;
+}
+
+.medhist-bell-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid #f2dae0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #271218;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(220, 100, 140, 0.04);
+  transition: all 0.15s ease;
+}
+
+.medhist-bell-btn:hover {
+  background: #fdf0f4;
+}
+
+.medhist-profile-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 2px 4px;
+}
+
+.medhist-avatar-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #ea85a4;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.medhist-profile-name {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #271218;
+}
+
+.medhist-chevron-icon {
+  color: #271218;
+}
+
+/* --------------------------------------------------------------------------
+   3. Card 1: Question & Options
+   -------------------------------------------------------------------------- */
+.medhist-card {
+  background: #ffffff;
+  border: 1px solid #f4e2e7;
+  border-radius: 16px;
+  box-shadow: 0 3px 14px rgba(210, 80, 120, 0.03);
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.medhist-question-card {
+  padding: 20px 24px 20px 24px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 137px;
+}
+
+.medhist-question-left {
+  position: relative;
+  z-index: 2;
+  max-width: 580px;
+}
+
+.medhist-question-text {
+  font-size: 15.5px;
+  font-weight: 700;
+  color: #271218;
+  line-height: 1.35;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.01em;
+}
+
+.medhist-options-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.medhist-option-btn {
+  height: 38px;
+  width: 142px;
+  padding: 0 16px;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1.2px solid #e7d8dd;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-size: 13px;
+  font-weight: 500;
+  color: #271218;
+  box-sizing: border-box;
+}
+
+.medhist-option-btn:hover {
+  border-color: #d82b6b;
+  background: #fff8fa;
+}
+
+.medhist-option-btn.is-selected {
+  background: #ffe3ee;
+  border: 1.5px solid #d82b6b;
+  font-weight: 600;
+}
+
+/* Radio circle inside option */
+.medhist-radio-indicator {
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  border: 1.4px solid #bbaab2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.15s ease;
+  box-sizing: border-box;
+}
+
+.medhist-option-btn.is-selected .medhist-radio-indicator {
+  background: #d82b6b;
+  border-color: #d82b6b;
+  color: #ffffff;
+}
+
+.medhist-question-illustration-wrap {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+}
+
+.medhist-question-illustration {
+  height: 100%;
+  object-fit: contain;
+  object-position: right center;
+}
+
+/* --------------------------------------------------------------------------
+   4. Card 2: Upload Relevant Records
+   -------------------------------------------------------------------------- */
+.medhist-upload-card {
+  padding: 18px 24px 20px 24px;
+  height: 270px;
+  display: flex;
+  flex-direction: column;
+}
+
+.medhist-upload-title {
+  font-size: 15.5px;
+  font-weight: 700;
+  color: #271218;
+  margin: 0 0 3px 0;
+  letter-spacing: -0.01em;
+}
+
+.medhist-upload-subtitle {
+  font-size: 12.5px;
+  color: #63535b;
+  margin: 0 0 12px 0;
+  line-height: 1.35;
+}
+
+/* Drag & drop box */
+.medhist-dropzone {
+  border: 1.4px dashed #f0b4c3;
+  border-radius: 12px;
+  background: #fefafd;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  height: 96px;
+  box-sizing: border-box;
+}
+
+.medhist-dropzone:hover,
+.medhist-dropzone.is-dragover {
+  border-color: #d82b6b;
+  background: #fff0f5;
+}
+
+.medhist-cloud-icon-wrap {
+  margin-bottom: 4px;
+  color: #d82b6b;
+}
+
+.medhist-dropzone-prompt {
+  font-size: 12px;
+  color: #271218;
+  margin: 0;
+}
+
+.medhist-click-upload-btn {
+  color: #d82b6b;
+  font-weight: 600;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: inherit;
+}
+
+.medhist-click-upload-btn:hover {
+  text-decoration: underline;
+}
+
+.medhist-dropzone-hint {
+  font-size: 10.5px;
+  color: #726269;
+  margin-top: 3px;
+}
+
+/* Validation notice */
+.medhist-validation-error {
+  margin-top: 6px;
+  padding: 5px 10px;
+  border-radius: 6px;
+  background: #fff0f2;
+  border: 1px solid #fecdd3;
+  color: #b91c1c;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Card 2 Bottom Row: Uploaded files left + Save button right */
+.medhist-card2-bottom-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-top: auto;
+  gap: 16px;
+}
+
+/* Uploaded Files container */
+.medhist-uploaded-section {
+  width: 385px;
+  background: #faedf3;
+  border-radius: 11px;
+  padding: 9px 12px;
+  box-sizing: border-box;
+}
+
+.medhist-uploaded-header {
+  font-size: 12px;
+  font-weight: 600;
+  color: #271218;
+  margin-bottom: 6px;
+}
+
+.medhist-uploaded-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.medhist-file-item {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 1px 2px rgba(220, 100, 140, 0.04);
+}
+
+.medhist-file-info {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.medhist-pdf-badge {
+  width: 24px;
+  height: 28px;
+  border-radius: 4px;
+  background: #e83363;
+  color: #ffffff;
+  font-size: 7.5px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+}
+
+.medhist-img-badge {
+  width: 24px;
+  height: 28px;
+  border-radius: 4px;
+  background: #d82b6b;
+  color: #ffffff;
+  font-size: 7.5px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+}
+
+.medhist-file-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.medhist-file-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: #271218;
+}
+
+.medhist-file-size {
+  font-size: 10.5px;
+  color: #726269;
+}
+
+.medhist-file-remove-btn {
+  background: none;
+  border: none;
+  padding: 3px;
+  cursor: pointer;
+  color: #d82b6b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: opacity 0.15s ease;
+}
+
+.medhist-file-remove-btn:hover {
+  opacity: 0.7;
+}
+
+/* Save & Continue Button */
+.medhist-save-btn {
+  background: linear-gradient(135deg, #e43372 0%, #cf2562 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 9999px;
+  padding: 9px 24px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  box-shadow: 0 3px 12px rgba(220, 40, 101, 0.25);
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  height: 38px;
+  box-sizing: border-box;
+}
+
+.medhist-save-btn:hover {
+  background: linear-gradient(135deg, #ec4380 0%, #d82a69 100%);
+  box-shadow: 0 5px 15px rgba(220, 40, 101, 0.32);
+  transform: translateY(-1px);
+}
+
+.medhist-save-btn:active {
+  transform: translateY(0);
+}

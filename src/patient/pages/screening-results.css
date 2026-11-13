@@ -1,0 +1,729 @@
+/* ==========================================================================
+   Miora – Screening Results Screen Styles
+   Matches the attached visual source of truth exactly
+   ========================================================================== */
+
+:root {
+  --results-bg: #fcf4f6;
+  --results-sidebar-bg: #fcf4f6;
+  --results-card-bg: #ffffff;
+  --results-border: #f4dfe6;
+  --results-divider: #f1dae2;
+  --results-raspberry: #d92569;
+  --results-raspberry-hover: #c41c5a;
+  --results-raspberry-pill: #fde8ef;
+  --results-reassurance-bg: #fef1f5;
+  --results-text-primary: #1f1319;
+  --results-text-body: #26161f;
+  --results-text-muted: #64525c;
+  --results-font-serif: 'Playfair Display', Georgia, serif;
+  --results-font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Base shell layout */
+.miora-results-shell {
+  display: flex;
+  min-height: 100vh;
+  background: var(--results-bg);
+  font-family: var(--results-font-sans);
+  color: var(--results-text-body);
+  position: relative;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+/* --------------------------------------------------------------------------
+   1. Left Sidebar
+   -------------------------------------------------------------------------- */
+.miora-results-sidebar {
+  width: 156px;
+  min-width: 156px;
+  background: var(--results-sidebar-bg);
+  border-right: 1px solid var(--results-divider);
+  display: flex;
+  flex-direction: column;
+  padding: 20px 10px 20px 16px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  box-sizing: border-box;
+  z-index: 30;
+  user-select: none;
+}
+
+.results-sidebar-brand {
+  display: flex;
+  flex-direction: column;
+}
+
+.results-brand-link {
+  display: inline-flex;
+  align-items: baseline;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.results-brand-mark {
+  display: inline-flex;
+  align-items: baseline;
+  color: #d92569;
+}
+
+.results-brand-mark .brand-m {
+  width: 30px;
+  height: 24px;
+  color: #d92569;
+  vertical-align: middle;
+}
+
+.results-brand-mark .brand-script {
+  font-family: var(--results-font-serif);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 30px;
+  letter-spacing: -0.02em;
+  color: #d92569;
+  margin-left: 1px;
+}
+
+.results-brand-tagline {
+  font-size: 11px;
+  line-height: 1.25;
+  color: #24141d;
+  font-weight: 500;
+  margin-top: 6px;
+  letter-spacing: -0.01em;
+}
+
+.results-brand-divider {
+  width: 42px;
+  height: 1.5px;
+  background: #e8a2b5;
+  margin-top: 12px;
+  margin-bottom: 20px;
+  border-radius: 2px;
+}
+
+.results-sidebar-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.results-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.results-nav-item {
+  margin: 0;
+  padding: 0;
+}
+
+.results-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 10px;
+  border-radius: 10px;
+  color: #3b2831;
+  font-size: 12.5px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 120ms ease;
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.results-nav-link:hover {
+  background: #fae6ec;
+  color: #be185d;
+}
+
+.results-nav-link.is-active {
+  background: #fde2ec;
+  color: #be185d;
+  font-weight: 600;
+}
+
+.results-nav-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+  color: inherit;
+}
+
+.results-nav-label {
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+}
+
+/* Sidebar Footer */
+.results-sidebar-footer {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding-top: 10px;
+}
+
+/* --------------------------------------------------------------------------
+   2. Main Content Viewport
+   -------------------------------------------------------------------------- */
+.miora-results-viewport {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 16px 28px 20px 28px;
+  box-sizing: border-box;
+  background: var(--results-bg);
+}
+
+/* Top Header Bar */
+.results-top-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  position: relative;
+  z-index: 20;
+}
+
+.results-header-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.results-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  color: var(--results-text-muted);
+  margin-bottom: 6px;
+}
+
+.results-breadcrumb-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--results-text-muted);
+  text-decoration: none;
+  transition: color 120ms ease;
+}
+
+.results-breadcrumb-link:hover {
+  color: var(--results-raspberry);
+}
+
+.results-breadcrumb-sep {
+  color: #a48c96;
+  font-size: 12px;
+}
+
+.results-breadcrumb-current {
+  color: #24141d;
+  font-weight: 600;
+}
+
+.results-main-heading {
+  font-family: var(--results-font-serif);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--results-text-primary);
+  margin: 0 0 3px 0;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+}
+
+.results-main-subtitle {
+  font-size: 12px;
+  color: var(--results-text-muted);
+  margin: 0;
+  line-height: 1.35;
+}
+
+/* Header Right: Tracker + Notifications + User Avatar */
+.results-header-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 4px;
+}
+
+/* Four-stage progress tracker */
+.results-progress-tracker {
+  display: flex;
+  align-items: center;
+}
+
+.results-tracker-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  min-width: 60px;
+}
+
+.results-tracker-circle {
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 2;
+  transition: all 160ms ease;
+}
+
+/* Step 1 & 2: Completed */
+.results-tracker-step.is-completed .results-tracker-circle {
+  background: #e91e63;
+  border: none;
+  color: #ffffff;
+}
+
+/* Step 3: Analysis (Active ring with inner dot) */
+.results-tracker-step.is-active .results-tracker-circle {
+  background: #ffffff;
+  border: 2px solid #e91e63;
+  padding: 1.5px;
+}
+
+.results-tracker-inner-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #e91e63;
+}
+
+/* Step 4: Results (Upcoming) */
+.results-tracker-step.is-upcoming .results-tracker-circle {
+  background: #ffffff;
+  border: 2px solid #d8bfca;
+}
+
+.results-tracker-label {
+  font-size: 10px;
+  margin-top: 5px;
+  white-space: nowrap;
+  color: #3b2831;
+  font-weight: 500;
+}
+
+.results-tracker-step.is-active .results-tracker-label {
+  color: #d81e64;
+  font-weight: 600;
+}
+
+.results-tracker-step.is-upcoming .results-tracker-label {
+  color: #7b6570;
+}
+
+/* Connecting lines between tracker steps */
+.results-tracker-line {
+  width: 44px;
+  height: 2px;
+  margin-bottom: 18px; /* align with circle center */
+}
+
+.results-tracker-line.is-active-line {
+  background: #e91e63;
+}
+
+.results-tracker-line.is-upcoming-line {
+  background: #e2cad2;
+}
+
+/* User Controls (Bell & Avatar) */
+.results-user-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.results-notif-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #3a2830;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border-radius: 50%;
+  transition: background 120ms ease;
+}
+
+.results-notif-btn:hover {
+  background: #fde8ef;
+}
+
+.results-profile-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 999px;
+  transition: opacity 120ms ease;
+}
+
+.results-profile-pill:hover {
+  opacity: 0.85;
+}
+
+.results-avatar-circle {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #f06292;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.results-profile-name {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #24141d;
+}
+
+.results-profile-chevron {
+  color: #3a2830;
+}
+
+/* --------------------------------------------------------------------------
+   3. Content Cards Section
+   -------------------------------------------------------------------------- */
+.results-cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  z-index: 20;
+  width: 100%;
+}
+
+/* Card 1: Combined Split Card (About PPD Left + Estimated Risk Right) */
+.results-top-card {
+  background: var(--results-card-bg);
+  border: 1px solid var(--results-border);
+  border-radius: 16px;
+  box-shadow: 0 2px 10px rgba(180, 70, 95, 0.03);
+  display: flex;
+  padding: 18px 24px;
+  gap: 26px;
+  box-sizing: border-box;
+}
+
+/* Left portion: About PPD */
+.results-about-section {
+  flex: 1.85;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.results-about-tag {
+  align-self: flex-start;
+  background: var(--results-raspberry-pill);
+  color: #9d2553;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 12px;
+  border-radius: 9999px;
+  margin-bottom: 10px;
+}
+
+.results-about-text {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--results-text-body);
+  margin: 0 0 12px 0;
+}
+
+/* Pink reassurance box */
+.results-reassurance-box {
+  background: var(--results-reassurance-bg);
+  border-radius: 10px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.results-heart-icon {
+  width: 19px;
+  height: 19px;
+  flex-shrink: 0;
+  color: #d92569;
+}
+
+.results-reassurance-text {
+  font-size: 11.5px;
+  line-height: 1.4;
+  color: #2b1b23;
+  margin: 0;
+}
+
+.results-reassurance-text strong {
+  color: #201218;
+  font-weight: 700;
+}
+
+/* Vertical divider between Left and Right card sections */
+.results-card-vdivider {
+  width: 1px;
+  background: var(--results-divider);
+  align-self: stretch;
+}
+
+/* Right portion: Estimated Risk of PPD */
+.results-risk-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 190px;
+}
+
+.results-risk-heading {
+  font-family: var(--results-font-serif);
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--results-text-primary);
+  margin: 0 0 10px 0;
+  text-align: center;
+}
+
+/* Compact Circular Progress Ring */
+.results-circular-gauge {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.results-gauge-svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.results-gauge-bg {
+  fill: none;
+  stroke: #fde5ee;
+  stroke-width: 10;
+}
+
+.results-gauge-fill {
+  fill: none;
+  stroke: #eb1e63;
+  stroke-width: 10;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.results-gauge-value {
+  position: absolute;
+  font-family: var(--results-font-serif);
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--results-text-primary);
+  letter-spacing: -0.02em;
+}
+
+/* --------------------------------------------------------------------------
+   Card 2: Key Insights
+   -------------------------------------------------------------------------- */
+.results-insights-card {
+  background: var(--results-card-bg);
+  border: 1px solid var(--results-border);
+  border-radius: 16px;
+  box-shadow: 0 2px 10px rgba(180, 70, 95, 0.03);
+  padding: 14px 24px 16px 24px;
+  box-sizing: border-box;
+}
+
+.results-insights-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.results-insights-icon {
+  width: 16px;
+  height: 16px;
+  color: #d92569;
+  flex-shrink: 0;
+}
+
+.results-insights-title {
+  font-family: var(--results-font-serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--results-text-primary);
+  margin: 0;
+}
+
+.results-insights-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  align-items: center;
+  gap: 16px;
+}
+
+.results-insight-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.results-insight-icon {
+  width: 25px;
+  height: 25px;
+  color: #db4477;
+  flex-shrink: 0;
+}
+
+.results-insight-desc {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--results-text-body);
+}
+
+.results-insight-vdivider {
+  width: 1px;
+  height: 32px;
+  background: var(--results-divider);
+}
+
+/* --------------------------------------------------------------------------
+   4. Bottom Actions Row
+   -------------------------------------------------------------------------- */
+.results-actions-row {
+  display: flex;
+  align-items: center;
+  margin-top: 14px;
+  position: relative;
+  z-index: 20;
+  width: 100%;
+}
+
+.results-btn-retake {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: #b52658;
+  border: 1.5px solid #d93872;
+  border-radius: 9999px;
+  padding: 8px 22px;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 140ms ease;
+  text-decoration: none;
+  font-family: var(--results-font-sans);
+  margin-left: 10px;
+}
+
+.results-btn-retake:hover {
+  background: #fdebf2;
+  border-color: #c41c5a;
+  color: #9f1c49;
+}
+
+.results-btn-retake svg {
+  width: 13.5px;
+  height: 13.5px;
+}
+
+.results-btn-consult {
+  margin-left: auto;
+  margin-right: 140px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #e4226a;
+  background: linear-gradient(90deg, #ea226d 0%, #d8165c 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 9999px;
+  padding: 9px 32px;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(228, 34, 106, 0.28);
+  transition: all 140ms ease;
+  text-decoration: none;
+  font-family: var(--results-font-sans);
+}
+
+.results-btn-consult:hover {
+  background: linear-gradient(90deg, #d8165c 0%, #c41050 100%);
+  box-shadow: 0 6px 18px rgba(228, 34, 106, 0.36);
+  transform: translateY(-1px);
+}
+
+/* --------------------------------------------------------------------------
+   5. Bottom Decorative Waves & Corner Flower
+   -------------------------------------------------------------------------- */
+.results-bottom-waves {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 70px;
+  pointer-events: none;
+  z-index: 5;
+  overflow: hidden;
+}
+
+.results-bottom-waves svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.results-floral-decor {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 15;
+}
+
+.results-corner-flower-img {
+  width: 130px;
+  height: auto;
+  display: block;
+}
