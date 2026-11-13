@@ -1,9 +1,9 @@
 /* ==========================================================================
    Miora – My Reports Screen Styles
-   Exact 1:1 reproduction of the visual reference screenshot (1024x576)
+   Accurate 1:1 reproduction of the reference screenshot (desktop viewport)
    ========================================================================== */
 
-/* Main outer container containing left sidebar and right reports content */
+/* Main outer shell */
 .miora-reports-shell {
   display: flex;
   min-height: 100vh;
@@ -13,126 +13,11 @@
   overflow-x: hidden;
   position: relative;
   box-sizing: border-box;
+  width: 100%;
 }
 
 /* --------------------------------------------------------------------------
-   1. Left Sidebar (Matching other patient screens & Image 2)
-   -------------------------------------------------------------------------- */
-.miora-reports-sidebar {
-  width: 163px;
-  min-width: 163px;
-  max-width: 163px;
-  background: #fdf4f6;
-  border-right: 1px solid #f3dde3;
-  display: flex;
-  flex-direction: column;
-  padding: 18px 12px 16px 16px;
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  box-sizing: border-box;
-  z-index: 40;
-}
-
-.reports-sidebar-brand {
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 16px;
-}
-
-.reports-brand-link {
-  display: inline-flex;
-  align-items: baseline;
-  text-decoration: none;
-}
-
-.reports-brand-script {
-  font-family: var(--serif, 'Playfair Display', Georgia, serif);
-  font-style: italic;
-  font-weight: 700;
-  font-size: 29px;
-  letter-spacing: -0.02em;
-  color: #d93c75;
-  line-height: 1;
-}
-
-.reports-brand-tagline {
-  font-size: 9.5px;
-  color: #2d1820;
-  font-weight: 600;
-  margin-top: 5px;
-  letter-spacing: -0.01em;
-  line-height: 1.25;
-}
-
-.reports-sidebar-nav {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.reports-nav-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-
-.reports-nav-item {
-  margin: 0;
-  padding: 0;
-}
-
-.reports-nav-link {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  padding: 6px 10px;
-  border-radius: 10px;
-  color: #3f2d34;
-  font-size: 11.5px;
-  font-weight: 500;
-  text-decoration: none;
-  transition: all 120ms ease;
-  background: transparent;
-}
-
-.reports-nav-link:hover {
-  background: #fae6ed;
-  color: #c73566;
-}
-
-.reports-nav-link.is-active {
-  background: #fde4ed;
-  color: #c73566;
-  font-weight: 600;
-}
-
-.reports-nav-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
-}
-
-.reports-nav-label {
-  white-space: nowrap;
-  letter-spacing: -0.01em;
-}
-
-/* Sidebar Footer (Profile, Settings) */
-.reports-sidebar-footer {
-  margin-top: auto;
-  padding-top: 10px;
-}
-
-/* --------------------------------------------------------------------------
-   2. Main Content Viewport
+   1. Content Viewport
    -------------------------------------------------------------------------- */
 .miora-reports-viewport {
   flex: 1;
@@ -141,12 +26,11 @@
   flex-direction: column;
   position: relative;
   background: radial-gradient(circle at 82% 10%, #fdf0f4 0%, #fef7f6 45%, #fdf5f7 100%);
-  padding: 16px 24px 20px 20px;
+  padding: 18px 24px 24px 24px;
   box-sizing: border-box;
-  overflow-y: auto;
 }
 
-/* Bottom floral wave */
+/* Bottom floral wave accent */
 .reports-bottom-wave {
   position: absolute;
   bottom: 0;
@@ -159,7 +43,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   3. Header Area
+   2. Header Area Matching Screenshot
    -------------------------------------------------------------------------- */
 .reports-header-row {
   display: flex;
@@ -167,54 +51,47 @@
   justify-content: space-between;
   position: relative;
   margin-bottom: 14px;
+  min-height: 72px;
 }
 
 .reports-header-text {
   display: flex;
   flex-direction: column;
   z-index: 2;
-  max-width: 480px;
+  max-width: 520px;
 }
 
+/* Breadcrumb: [folder icon] My Reports */
 .reports-breadcrumb {
   display: flex;
   align-items: center;
-  gap: 5px;
-  font-size: 11px;
+  gap: 6px;
+  font-size: 11.5px;
   color: #6c5a62;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
-.reports-breadcrumb-link {
+.reports-breadcrumb-icon {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  color: #5c4951;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.reports-breadcrumb-link:hover {
-  color: #c73566;
-}
-
-.reports-breadcrumb-sep {
-  font-size: 11px;
-  color: #8c7880;
+  justify-content: center;
+  color: #6c5a62;
 }
 
 .reports-breadcrumb-current {
   color: #241118;
   font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
+/* Main Editorial Serif Heading & Subtitle */
 .reports-title {
   font-family: var(--serif, 'Playfair Display', Georgia, serif);
   font-size: 26px;
   font-weight: 700;
   color: #200f16;
   letter-spacing: -0.02em;
-  margin: 0 0 4px 0;
+  margin: 0 0 3px 0;
   line-height: 1.15;
 }
 
@@ -225,96 +102,47 @@
   margin: 0;
 }
 
-/* Mother and Baby Illustration Banner in Upper-Right Corner */
+/* Maternal Illustration Banner in Upper-Right Corner */
 .reports-header-illustration-wrap {
   position: absolute;
-  top: -8px;
-  right: 155px;
+  top: -12px;
+  right: 130px;
   z-index: 1;
   pointer-events: none;
 }
 
 .reports-header-illustration {
-  height: 112px;
+  height: 110px;
   width: auto;
   object-fit: contain;
   opacity: 0.98;
 }
 
-/* User Controls (Bell + Profile) in Top Right */
-.reports-header-actions {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  z-index: 10;
-  margin-top: 2px;
-}
-
-.reports-icon-btn {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: #ffffff;
-  border: 1px solid #f2d9df;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #4b3941;
-  cursor: pointer;
-  box-shadow: 0 1px 3px rgba(180, 100, 120, 0.05);
-  position: relative;
-  transition: all 120ms ease;
-}
-
-.reports-icon-btn:hover {
-  background: #fae8ed;
-  color: #c73566;
-}
-
-.reports-notif-dot {
+/* Simulation Controls */
+.reports-simulation-controls {
   position: absolute;
-  top: 6px;
-  right: 6px;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #c73566;
-  border: 1.5px solid #fff;
+  top: 0;
+  right: 0;
+  z-index: 10;
 }
 
-.reports-profile-btn {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: transparent;
-  border: none;
+.reports-sim-toggle-btn {
+  background: #ffffff;
+  border: 1px solid #ebd4dd;
+  border-radius: 14px;
+  padding: 3px 9px;
+  font-size: 10.5px;
+  font-weight: 500;
+  color: #79666f;
   cursor: pointer;
-  padding: 2px 4px;
-  border-radius: 20px;
-  transition: opacity 120ms ease;
+  transition: all 120ms ease;
+  box-shadow: 0 1px 2px rgba(180, 100, 120, 0.04);
 }
 
-.reports-profile-btn:hover {
-  opacity: 0.85;
-}
-
-.reports-avatar-badge {
-  width: 27px;
-  height: 27px;
-  border-radius: 50%;
-  background: #ec7e9e;
-  color: #ffffff;
-  font-weight: 600;
-  font-size: 12.5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.reports-profile-name {
-  font-size: 12.5px;
-  font-weight: 600;
-  color: #271218;
+.reports-sim-toggle-btn:hover {
+  background: #fdf0f4;
+  color: #c73566;
+  border-color: #e5c3cd;
 }
 
 /* --------------------------------------------------------------------------
@@ -369,37 +197,30 @@
 }
 
 /* --------------------------------------------------------------------------
-   4. Dashboard Layout: 3 Columns (Left 310px, Centre 285px, Right 196px)
+   4. Overview Dashboard Layout: Two 3-Card Rows
    -------------------------------------------------------------------------- */
-.reports-dashboard-body {
+.reports-dashboard-grid {
   display: flex;
+  flex-direction: column;
   gap: 12px;
   position: relative;
   z-index: 5;
 }
 
-.reports-left-column {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.reports-row-1 {
+/* Top Row: [Card 1: Latest Result] [Card 2: Trend] [Card 3: Downloads] */
+.reports-grid-row-top {
   display: grid;
-  grid-template-columns: 310px 1fr;
+  grid-template-columns: 1.35fr 1.4fr 1fr;
   gap: 12px;
+  align-items: stretch;
 }
 
-.reports-row-2 {
+/* Bottom Row: [Card 4: Key Insights] [Card 5: Summary] [Card 6: Next Steps] */
+.reports-grid-row-bottom {
   display: grid;
-  grid-template-columns: 180px 1.22fr 1.05fr;
+  grid-template-columns: 0.95fr 1.45fr 1.3fr;
   gap: 12px;
-}
-
-.reports-right-column {
-  width: 196px;
-  flex-shrink: 0;
+  align-items: stretch;
 }
 
 /* --------------------------------------------------------------------------
@@ -456,7 +277,7 @@
 .latest-screening-content {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   flex: 1;
 }
 
@@ -468,6 +289,11 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+}
+
+.screening-gauge-wrap.is-pending {
+  border: 2px dashed #fae2eb;
+  border-radius: 50%;
 }
 
 .screening-gauge-svg {
@@ -484,7 +310,7 @@
 
 .screening-gauge-fill {
   fill: none;
-  stroke: url(#screeningGradient);
+  stroke: url(#screeningScoreGrad);
   stroke-width: 8;
   stroke-linecap: round;
 }
@@ -518,6 +344,7 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 6px;
+  flex: 1;
 }
 
 .screening-risk-pill {
@@ -560,16 +387,33 @@
   background: #bf275b;
 }
 
+.screening-discuss-btn .btn-arrow {
+  font-size: 12px;
+  line-height: 1;
+}
+
 /* --------------------------------------------------------------------------
-   Card 2: Emotional Well-being Trend (Chart)
+   Card 2: Emotional Well-being Trend (Clean Chart matching reference)
    -------------------------------------------------------------------------- */
 .trend-chart-wrap {
   width: 100%;
-  height: 122px;
+  height: 120px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   position: relative;
+  background: #ffffff;
+}
+
+.trend-empty-notice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  font-size: 11px;
+  color: #8c7881;
+  padding: 0 16px;
 }
 
 .trend-svg {
@@ -602,16 +446,19 @@
   stroke: #e7437f;
   stroke-width: 1.8;
   cursor: pointer;
+  transition: all 120ms ease;
+}
+
+.trend-point.is-active,
+.trend-point:hover {
+  fill: #e7437f;
+  stroke: #ffffff;
+  stroke-width: 2;
 }
 
 /* --------------------------------------------------------------------------
-   Card 3: Download Reports (Right Column Tall Card)
+   Card 3: Download Reports
    -------------------------------------------------------------------------- */
-.card-download-reports {
-  height: auto;
-  min-height: 240px;
-}
-
 .download-reports-list {
   display: flex;
   flex-direction: column;
@@ -623,13 +470,17 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 5px 3px;
+  padding: 4px 4px;
   border-radius: 6px;
   transition: background 120ms ease;
 }
 
 .download-report-item:hover {
   background: #fdf5f7;
+}
+
+.download-report-item.is-unavailable {
+  opacity: 0.6;
 }
 
 .report-file-left {
@@ -639,8 +490,8 @@
 }
 
 .report-icon-box {
-  width: 25px;
-  height: 25px;
+  width: 26px;
+  height: 26px;
   border-radius: 6px;
   background: #fdf0f4;
   border: 1px solid #fae1e9;
@@ -674,7 +525,7 @@
   border: none;
   color: #b63a64;
   cursor: pointer;
-  padding: 4px;
+  padding: 4px 6px;
   border-radius: 4px;
   display: inline-flex;
   align-items: center;
@@ -682,9 +533,14 @@
   transition: all 120ms ease;
 }
 
-.report-download-btn:hover {
+.report-download-btn:hover:not(:disabled) {
   background: #fae4ec;
   color: #d6336c;
+}
+
+.report-download-btn.is-disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 /* --------------------------------------------------------------------------
@@ -830,10 +686,12 @@
 
 .next-step-chevron {
   color: #948088;
+  font-size: 13px;
+  font-weight: 600;
 }
 
 /* --------------------------------------------------------------------------
-   Other Functional Tabs View
+   5. Sub-Tabs Views Styling
    -------------------------------------------------------------------------- */
 .reports-tab-view {
   background: #ffffff;
@@ -841,6 +699,12 @@
   border-radius: 14px;
   padding: 20px;
   box-shadow: 0 1px 6px rgba(216, 49, 91, 0.03);
+  position: relative;
+  z-index: 5;
+}
+
+.tab-view-header {
+  margin-bottom: 16px;
 }
 
 .tab-view-heading {
@@ -848,22 +712,398 @@
   font-size: 18px;
   font-weight: 700;
   color: #241118;
-  margin: 0 0 6px 0;
+  margin: 0 0 4px 0;
 }
 
 .tab-view-sub {
   font-size: 12px;
   color: #6c5a62;
-  margin: 0 0 16px 0;
+  margin: 0;
 }
 
-/* Empty State */
+/* Screening Sessions List */
+.screening-sessions-table-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.session-card-item {
+  border: 1px solid #f2dde4;
+  border-radius: 10px;
+  padding: 14px;
+  background: #ffffff;
+  transition: border-color 120ms ease;
+}
+
+.session-card-item:hover {
+  border-color: #e3b7c5;
+}
+
+.session-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.session-card-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.session-id-pill {
+  font-weight: 700;
+  font-size: 11.5px;
+  color: #241118;
+  background: #fdf0f4;
+  padding: 2px 7px;
+  border-radius: 6px;
+}
+
+.session-status-pill {
+  font-size: 11px;
+  font-weight: 600;
+  color: #2e7d32;
+  background: #e8f5e9;
+  padding: 2px 7px;
+  border-radius: 6px;
+}
+
+.session-demo-pill {
+  font-size: 10px;
+  font-weight: 600;
+  color: #c73566;
+  background: #fae4ec;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+.session-date-text {
+  font-size: 11.5px;
+  color: #79666f;
+}
+
+.session-card-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.session-result-info {
+  flex: 1;
+}
+
+.session-score-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.session-score-tag strong {
+  color: #d6336c;
+  font-size: 13px;
+}
+
+.session-score-tag span {
+  font-size: 12px;
+  color: #3b2830;
+  font-weight: 500;
+}
+
+.session-pending-text {
+  font-size: 12px;
+  color: #8c7881;
+  font-style: italic;
+}
+
+.session-summary-text {
+  font-size: 11.5px;
+  color: #5c4a52;
+  margin: 0;
+  line-height: 1.35;
+}
+
+.session-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.session-view-btn {
+  background: #fdf0f4;
+  border: 1px solid #f2dde4;
+  color: #c73566;
+  padding: 5px 12px;
+  border-radius: 16px;
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 120ms ease;
+}
+
+.session-view-btn:hover {
+  background: #fae2eb;
+}
+
+.session-quick-downloads {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.session-dl-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #ffffff;
+  border: 1px solid #ebd4dd;
+  border-radius: 6px;
+  padding: 4px 7px;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: #3b2830;
+  cursor: pointer;
+  transition: all 120ms ease;
+}
+
+.session-dl-icon-btn:hover:not(:disabled) {
+  background: #fdf0f4;
+  color: #c73566;
+  border-color: #e5c3cd;
+}
+
+.session-dl-icon-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Doctor Consultations */
+.consultations-list-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 680px;
+}
+
+.consultation-card {
+  border: 1px solid #f2dde4;
+  border-radius: 10px;
+  padding: 14px 16px;
+  background: #ffffff;
+}
+
+.consult-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 6px;
+}
+
+.consult-doc-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.consult-doc-name {
+  font-size: 13.5px;
+  color: #241118;
+}
+
+.consult-doc-role {
+  font-size: 11.5px;
+  color: #79666f;
+  margin-top: 1px;
+}
+
+.consult-status-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2.5px 8px;
+  border-radius: 10px;
+}
+
+.consult-status-badge.is-scheduled {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.consult-status-badge.is-completed {
+  background: #fdf0f4;
+  color: #c73566;
+}
+
+.consult-clinic-meta {
+  font-size: 12px;
+  color: #5c4a52;
+  margin: 4px 0 8px 0;
+}
+
+.consult-note-box {
+  background: #fdf5f7;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 11.5px;
+  color: #3a272f;
+  line-height: 1.4;
+}
+
+.consult-demo-notice {
+  font-size: 10.5px;
+  color: #9c8991;
+  font-style: italic;
+  margin-top: 6px;
+}
+
+/* Mood Tracking Container */
+.mood-tracking-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 720px;
+}
+
+.mood-history-card,
+.mood-logger-card {
+  border: 1px solid #f2dde4;
+  border-radius: 10px;
+  padding: 16px;
+  background: #ffffff;
+}
+
+.mood-card-title {
+  font-family: var(--serif, 'Playfair Display', Georgia, serif);
+  font-size: 14px;
+  font-weight: 700;
+  color: #241118;
+  margin: 0 0 12px 0;
+}
+
+.mood-table-header {
+  display: grid;
+  grid-template-columns: 100px 140px 90px 1fr;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #fae2eb;
+  font-size: 11px;
+  font-weight: 600;
+  color: #79666f;
+}
+
+.mood-table-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.mood-table-row {
+  display: grid;
+  grid-template-columns: 100px 140px 90px 1fr;
+  padding: 8px 0;
+  border-bottom: 1px solid #fdf0f4;
+  font-size: 11.5px;
+  color: #3b2830;
+  align-items: center;
+}
+
+.mood-table-row:last-child {
+  border-bottom: none;
+}
+
+.mood-logger-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mood-form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mood-form-label {
+  font-size: 11.5px;
+  color: #3b2830;
+}
+
+.mood-range-slider {
+  width: 100%;
+  accent-color: #d6336c;
+  cursor: pointer;
+}
+
+.mood-text-input {
+  border: 1px solid #ebd4dd;
+  border-radius: 8px;
+  padding: 7px 10px;
+  font-size: 11.5px;
+  font-family: inherit;
+  outline: none;
+}
+
+.mood-text-input:focus {
+  border-color: #d6336c;
+}
+
+/* All Reports Catalog */
+.all-reports-catalog {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 720px;
+}
+
+.all-reports-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #f2dde4;
+  border-radius: 8px;
+  padding: 10px 14px;
+  background: #ffffff;
+}
+
+.all-reports-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.all-reports-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.file-badge {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 10px;
+}
+
+.file-badge.is-local {
+  background: #fff8e1;
+  color: #b78103;
+}
+
+.file-badge.is-cloud {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+/* --------------------------------------------------------------------------
+   6. Clean Empty States
+   -------------------------------------------------------------------------- */
 .reports-empty-state {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 40px 20px;
+  padding: 44px 20px;
   text-align: center;
   background: #ffffff;
   border: 1px dashed #f0ccd8;
@@ -893,7 +1133,7 @@
 .empty-state-desc {
   font-size: 12px;
   color: #6e5c65;
-  max-width: 400px;
+  max-width: 420px;
   line-height: 1.45;
   margin: 0 0 16px 0;
 }
@@ -909,18 +1149,21 @@
   cursor: pointer;
   text-decoration: none;
   transition: all 120ms ease;
+  box-shadow: 0 2px 5px rgba(214, 51, 108, 0.22);
 }
 
 .empty-state-btn:hover {
   background: #bf275b;
 }
 
-/* Download Toast Notification */
+/* --------------------------------------------------------------------------
+   7. Toast Notification
+   -------------------------------------------------------------------------- */
 .reports-toast-banner {
   position: fixed;
   bottom: 20px;
   right: 24px;
-  padding: 8px 16px;
+  padding: 9px 16px;
   border-radius: 10px;
   display: flex;
   align-items: center;

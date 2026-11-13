@@ -1,0 +1,176 @@
+/* =============================================================================
+   Miora Unified Patient Sidebar Styles
+   ============================================================================= */
+
+.miora-unified-sidebar {
+  width: 172px;
+  min-width: 172px;
+  max-width: 172px;
+  background: #fdf3f6;
+  border-right: 1px solid rgba(228, 168, 185, 0.32);
+  display: flex;
+  flex-direction: column;
+  padding: 18px 10px 18px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Brand Section */
+.unified-sidebar-brand {
+  display: flex;
+  flex-direction: column;
+  padding: 0 4px 14px 4px;
+}
+
+.unified-brand-link {
+  text-decoration: none;
+  display: inline-block;
+  line-height: 1;
+  margin-bottom: 3px;
+}
+
+.unified-brand-script {
+  font-family: "Newsreader", "Playfair Display", Georgia, serif;
+  font-size: 26px;
+  font-style: italic;
+  font-weight: 500;
+  color: #241118;
+  letter-spacing: -0.01em;
+  display: inline-block;
+}
+
+.unified-brand-tagline {
+  font-size: 9.5px;
+  line-height: 1.25;
+  color: #8c5d6e;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  margin-top: 2px;
+}
+
+.unified-brand-divider {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(228, 168, 185, 0.45) 0%, rgba(228, 168, 185, 0) 100%);
+  margin-top: 14px;
+  margin-bottom: 2px;
+}
+
+/* Navigation List */
+.unified-sidebar-nav {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-top: 8px;
+}
+
+.unified-sidebar-nav::-webkit-scrollbar {
+  width: 4px;
+}
+
+.unified-sidebar-nav::-webkit-scrollbar-thumb {
+  background: rgba(228, 168, 185, 0.4);
+  border-radius: 4px;
+}
+
+.unified-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.unified-nav-item {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.unified-nav-link {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 9px 10px;
+  border-radius: 9px;
+  color: #634752;
+  text-decoration: none;
+  font-size: 11.5px;
+  font-weight: 500;
+  line-height: 1.3;
+  transition: all 0.16s ease;
+  box-sizing: border-box;
+}
+
+.unified-nav-link:hover {
+  background: rgba(235, 78, 122, 0.07);
+  color: #241118;
+}
+
+.unified-nav-link.is-active {
+  background: #fde8ef;
+  color: #c83264;
+  font-weight: 600;
+  box-shadow: inset 2.5px 0 0 #eb4e7a;
+}
+
+.unified-nav-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.unified-nav-label {
+  display: inline-block;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+/* Sidebar Footer (Profile and Settings) */
+.unified-sidebar-footer {
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+.unified-footer-divider {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(228, 168, 185, 0.45) 0%, rgba(228, 168, 185, 0) 100%);
+  margin-bottom: 8px;
+}
+
+.unified-footer-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+@media (max-width: 900px) {
+  .miora-unified-sidebar {
+    width: 60px;
+    min-width: 60px;
+    max-width: 60px;
+    padding: 14px 6px;
+  }
+  .unified-brand-tagline,
+  .unified-nav-label {
+    display: none;
+  }
+  .unified-nav-link {
+    justify-content: center;
+    padding: 9px;
+  }
+  .unified-brand-script {
+    font-size: 20px;
+  }
+}

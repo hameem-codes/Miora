@@ -3,13 +3,23 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { LandingPageRoute } from './LandingPageRoute.jsx';
 import { LoginScreen } from './LoginScreen.jsx';
 import { CreateAccountScreen } from './CreateAccountScreen.jsx';
+
+// Patient Foundation Architecture
+import { PatientProvider } from './patient/context/PatientContext.jsx';
+import { PatientLayout } from './patient/layout/PatientLayout.jsx';
+
+// Patient Screen Components
+import { MedicalHistoryScreen } from './patient/pages/MedicalHistoryScreen.jsx';
 import { PatientScreeningPage } from './patient/pages/PatientScreeningPage.jsx';
 import { ScreeningResultsPage } from './patient/pages/ScreeningResultsPage.jsx';
-import { MedicalHistoryScreen } from './patient/pages/MedicalHistoryScreen.jsx';
 import { AiAssistantScreen } from './patient/pages/AiAssistantScreen.jsx';
+import { ConnectDoctorPage } from './patient/pages/ConnectDoctorPage.jsx';
 import { PatientReportsPage } from './patient/pages/PatientReportsPage.jsx';
 import { CareSuggestionsPage } from './patient/pages/CareSuggestionsPage.jsx';
-import { PatientProvider } from './patient/context/PatientContext.jsx';
+import { PatientProfilePage } from './patient/pages/PatientProfilePage.jsx';
+import { PatientSettingsPage } from './patient/pages/PatientSettingsPage.jsx';
+
+// Clinician Dashboard Architecture & Pages (Preserved)
 import { ClinicalProvider } from './dashboard/context/ClinicalContext.jsx';
 import { DashboardLayout } from './dashboard/DashboardLayout.jsx';
 import { CommandCenterPage } from './dashboard/pages/CommandCenterPage.jsx';
@@ -27,6 +37,7 @@ export function App() {
       <PatientProvider>
         <BrowserRouter>
           <Routes>
+            {/* Public Routes */}
             <Route path="/" element={<LandingPageRoute />} />
             <Route path="/login" element={<LoginScreen />} />
             <Route path="/signin" element={<Navigate to="/login" replace />} />
@@ -34,69 +45,85 @@ export function App() {
             <Route path="/register" element={<CreateAccountScreen />} />
             <Route path="/signup" element={<Navigate to="/create-account" replace />} />
 
-            {/* Patient Portal Routes */}
-            <Route path="/patient/dashboard" element={<PatientReportsPage />} />
-            <Route path="/patient" element={<Navigate to="/patient/dashboard" replace />} />
-            <Route path="/patient/home" element={<Navigate to="/patient/dashboard" replace />} />
-            <Route path="/patient/reports" element={<PatientReportsPage />} />
-            <Route path="/patient/my-reports" element={<Navigate to="/patient/reports" replace />} />
-            <Route path="/reports" element={<Navigate to="/patient/reports" replace />} />
-            <Route path="/my-reports" element={<Navigate to="/patient/reports" replace />} />
-            <Route path="/patient/profile" element={<Navigate to="/patient/dashboard" replace />} />
-            <Route path="/patient/settings" element={<Navigate to="/patient/dashboard" replace />} />
+            {/* =================================================================
+                Patient Portal Routes (Nested in Shared PatientLayout)
+                ================================================================= */}
+            <Route element={<PatientLayout />}>
+              {/* 1. Medical History */}
+              <Route path="/patient/medical-history" element={<MedicalHistoryScreen />} />
+              <Route path="/medical-history" element={<Navigate to="/patient/medical-history" replace />} />
+              <Route path="/patient/history" element={<Navigate to="/patient/medical-history" replace />} />
 
-            {/* AI Assistant / Companion */}
-            <Route path="/ai-assistant" element={<AiAssistantScreen />} />
-            <Route path="/patient/ai-assistant" element={<AiAssistantScreen />} />
-            <Route path="/patient/companion" element={<Navigate to="/ai-assistant" replace />} />
-            <Route path="/assistant" element={<Navigate to="/ai-assistant" replace />} />
-            <Route path="/voice-assistant" element={<Navigate to="/ai-assistant" replace />} />
+              {/* 2. AI Screening */}
+              <Route path="/patient/screening" element={<PatientScreeningPage />} />
+              <Route path="/screening" element={<Navigate to="/patient/screening" replace />} />
+              <Route path="/ai-screening" element={<Navigate to="/patient/screening" replace />} />
+              <Route path="/patient-screening" element={<Navigate to="/patient/screening" replace />} />
+              <Route path="/patient/ai-screening" element={<Navigate to="/patient/screening" replace />} />
 
-            {/* Screening Journey (Stages 1-4) */}
-            <Route path="/medical-history" element={<MedicalHistoryScreen />} />
-            <Route path="/patient/medical-history" element={<MedicalHistoryScreen />} />
-            <Route path="/patient/history" element={<Navigate to="/medical-history" replace />} />
+              {/* Screening Results Sub-route */}
+              <Route path="/patient/screening-results" element={<ScreeningResultsPage />} />
+              <Route path="/screening-results" element={<Navigate to="/patient/screening-results" replace />} />
+              <Route path="/screening/results" element={<Navigate to="/patient/screening-results" replace />} />
+              <Route path="/patient/screening/results" element={<Navigate to="/patient/screening-results" replace />} />
+              <Route path="/patient/results" element={<Navigate to="/patient/screening-results" replace />} />
 
-            <Route path="/screening" element={<PatientScreeningPage />} />
-            <Route path="/ai-screening" element={<PatientScreeningPage />} />
-            <Route path="/patient/screening" element={<PatientScreeningPage />} />
-            <Route path="/patient-screening" element={<PatientScreeningPage />} />
-            <Route path="/patient/ai-screening" element={<PatientScreeningPage />} />
+              {/* 3. AI Assistant */}
+              <Route path="/patient/ai-assistant" element={<AiAssistantScreen />} />
+              <Route path="/patient/assistant" element={<Navigate to="/patient/ai-assistant" replace />} />
+              <Route path="/ai-assistant" element={<Navigate to="/patient/ai-assistant" replace />} />
+              <Route path="/patient/companion" element={<Navigate to="/patient/ai-assistant" replace />} />
+              <Route path="/assistant" element={<Navigate to="/patient/ai-assistant" replace />} />
+              <Route path="/voice-assistant" element={<Navigate to="/patient/ai-assistant" replace />} />
 
-            <Route path="/screening-results" element={<ScreeningResultsPage />} />
-            <Route path="/screening/results" element={<ScreeningResultsPage />} />
-            <Route path="/patient/screening/results" element={<ScreeningResultsPage />} />
-            <Route path="/patient/results" element={<ScreeningResultsPage />} />
+              {/* 4. Connect to a Doctor */}
+              <Route path="/patient/connect-doctor" element={<ConnectDoctorPage />} />
+              <Route path="/patient/connect" element={<Navigate to="/patient/connect-doctor" replace />} />
+              <Route path="/connect-doctor" element={<Navigate to="/patient/connect-doctor" replace />} />
 
-            {/* Care Suggestions & Doctor Consultations */}
-            <Route path="/patient/care-suggestions" element={<CareSuggestionsPage />} />
-            <Route path="/care-suggestions" element={<CareSuggestionsPage />} />
-            <Route path="/patient/suggestions" element={<Navigate to="/patient/care-suggestions" replace />} />
-            <Route path="/patient/connect-doctor" element={<Navigate to="/patient/reports?tab=consultations" replace />} />
-            <Route path="/patient/connect" element={<Navigate to="/patient/reports?tab=consultations" replace />} />
-            <Route path="/connect-doctor" element={<Navigate to="/patient/reports?tab=consultations" replace />} />
+              {/* 5. My Reports */}
+              <Route path="/patient/reports" element={<PatientReportsPage />} />
+              <Route path="/patient/dashboard" element={<Navigate to="/patient/reports" replace />} />
+              <Route path="/patient" element={<Navigate to="/patient/reports" replace />} />
+              <Route path="/patient/home" element={<Navigate to="/patient/reports" replace />} />
+              <Route path="/patient/my-reports" element={<Navigate to="/patient/reports" replace />} />
+              <Route path="/reports" element={<Navigate to="/patient/reports" replace />} />
+              <Route path="/my-reports" element={<Navigate to="/patient/reports" replace />} />
 
-          {/* Clinician Dashboard */}
-          <Route element={<DashboardLayout />}>
-            <Route path="/dashboard" element={<CommandCenterPage />} />
-            <Route path="/command-center" element={<Navigate to="/dashboard" replace />} />
-            <Route path="/mothers" element={<MothersCasesPage />} />
-            <Route path="/mothers/:motherId" element={<MothersCasesPage />} />
-            <Route path="/live-screening" element={<LiveScreeningPage />} />
-            <Route path="/upload-analyze" element={<UploadAnalyzePage />} />
-            <Route path="/results" element={<ResultsPage />} />
-            <Route path="/results/:motherId" element={<ResultsPage />} />
-            <Route path="/discordance" element={<DiscordancePage />} />
-            <Route path="/discordance/:motherId" element={<DiscordancePage />} />
-            <Route path="/clinical-review" element={<ClinicalReviewPage />} />
-            <Route path="/clinical-review/:motherId" element={<ClinicalReviewPage />} />
-            <Route path="/insights" element={<InsightsCarePage />} />
-            <Route path="/insights/:motherId" element={<InsightsCarePage />} />
-          </Route>
+              {/* 6. Care Suggestions */}
+              <Route path="/patient/care-suggestions" element={<CareSuggestionsPage />} />
+              <Route path="/care-suggestions" element={<Navigate to="/patient/care-suggestions" replace />} />
+              <Route path="/patient/suggestions" element={<Navigate to="/patient/care-suggestions" replace />} />
 
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-      </BrowserRouter>
+              {/* Profile & Settings */}
+              <Route path="/patient/profile" element={<PatientProfilePage />} />
+              <Route path="/patient/settings" element={<PatientSettingsPage />} />
+            </Route>
+
+            {/* =================================================================
+                Clinician Dashboard Routes (Preserved Exactly)
+                ================================================================= */}
+            <Route element={<DashboardLayout />}>
+              <Route path="/dashboard" element={<CommandCenterPage />} />
+              <Route path="/command-center" element={<Navigate to="/dashboard" replace />} />
+              <Route path="/mothers" element={<MothersCasesPage />} />
+              <Route path="/mothers/:motherId" element={<MothersCasesPage />} />
+              <Route path="/live-screening" element={<LiveScreeningPage />} />
+              <Route path="/upload-analyze" element={<UploadAnalyzePage />} />
+              <Route path="/results" element={<ResultsPage />} />
+              <Route path="/results/:motherId" element={<ResultsPage />} />
+              <Route path="/discordance" element={<DiscordancePage />} />
+              <Route path="/discordance/:motherId" element={<DiscordancePage />} />
+              <Route path="/clinical-review" element={<ClinicalReviewPage />} />
+              <Route path="/clinical-review/:motherId" element={<ClinicalReviewPage />} />
+              <Route path="/insights" element={<InsightsCarePage />} />
+              <Route path="/insights/:motherId" element={<InsightsCarePage />} />
+            </Route>
+
+            {/* Wildcard Fallback */}
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </BrowserRouter>
       </PatientProvider>
     </ClinicalProvider>
   );

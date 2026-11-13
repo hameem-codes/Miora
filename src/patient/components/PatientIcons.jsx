@@ -34,6 +34,8 @@ export function PatientIcon({ name, size = 18, color = 'currentColor', className
           <line x1="10" y1="9" x2="8" y2="9" />
         </svg>
       );
+    case 'live-ai-screening':
+    case 'live-screening':
     case 'ai-screening':
     case 'butterfly':
     case 'brain':
@@ -44,6 +46,38 @@ export function PatientIcon({ name, size = 18, color = 'currentColor', className
           <path d="M12 3v18" />
         </svg>
       );
+    case 'screening-results':
+    case 'results':
+    case 'bar-chart':
+    case 'assessment':
+      return (
+        <svg {...props}>
+          <line x1="18" y1="20" x2="18" y2="10" />
+          <line x1="12" y1="20" x2="12" y2="4" />
+          <line x1="6" y1="20" x2="6" y2="14" />
+        </svg>
+      );
+    case 'care-suggestions-recovery':
+    case 'care-suggestions':
+    case 'heart':
+      return (
+        <svg {...props}>
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+        </svg>
+      );
+    case 'my-reports-consultations':
+    case 'reports-consultations':
+    case 'my-reports':
+    case 'reports':
+    case 'folder':
+      return (
+        <svg {...props}>
+          <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
+        </svg>
+      );
+    case 'ai-companion':
+    case '24-7-companion':
+    case 'companion':
     case 'ai-assistant':
     case 'chat-dots':
       return (
@@ -61,20 +95,6 @@ export function PatientIcon({ name, size = 18, color = 'currentColor', className
           <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
           <line x1="12" y1="8" x2="12" y2="12" />
           <line x1="10" y1="10" x2="14" y2="10" />
-        </svg>
-      );
-    case 'reports':
-    case 'folder':
-      return (
-        <svg {...props}>
-          <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
-        </svg>
-      );
-    case 'care-suggestions':
-    case 'heart':
-      return (
-        <svg {...props}>
-          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
         </svg>
       );
     case 'profile':
@@ -100,7 +120,6 @@ export function PatientIcon({ name, size = 18, color = 'currentColor', className
           <path d="M13.73 21a2 2 0 0 1-3.46 0" />
         </svg>
       );
-    case 'bar-chart':
     case 'overview':
       return (
         <svg {...props}>

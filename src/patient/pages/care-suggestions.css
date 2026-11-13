@@ -1,35 +1,54 @@
 /* ==========================================================================
-   Miora – Care Suggestions Screen Styles
-   Pixel-accurate reproduction of the visual reference screenshot (1024x576)
+   MIORA — CARE SUGGESTIONS SCREEN STYLES
+   Pixel-accurate reproduction of the visual reference screenshot
+   Soft pink palette, editorial serif headings, rounded cards, generous whitespace
    ========================================================================== */
 
-/* Main outer shell */
+/* --------------------------------------------------------------------------
+   0. Layout Integration & Header Overrides
+   -------------------------------------------------------------------------- */
+/* When on Care Suggestions screen, hide redundant .miora-patient-header from PatientLayout
+   so our authentic, screenshot-accurate top header is displayed without duplication. */
+body:has(.miora-care-shell) .miora-patient-header,
+.miora-patient-main:has(.miora-care-shell) .miora-patient-header {
+  display: none !important;
+}
+
+/* Ensure patient content viewport fills cleanly */
+.miora-patient-content > .miora-care-shell {
+  display: block !important;
+  width: 100% !important;
+  min-height: 100vh !important;
+  background: transparent !important;
+  overflow: visible !important;
+}
+
+/* --------------------------------------------------------------------------
+   1. Outer Shell & Sidebar
+   -------------------------------------------------------------------------- */
 .miora-care-shell {
   display: flex;
   width: 100%;
-  height: 100vh;
-  min-height: 576px;
-  background: #fdf2f7;
+  min-height: 100vh;
+  background: #fdf3f6;
   color: #271218;
-  font-family: var(--sans, 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
-  overflow: hidden;
+  font-family: var(--patient-font-sans, 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
   position: relative;
   box-sizing: border-box;
 }
 
-/* --------------------------------------------------------------------------
-   1. Left Sidebar (Exact width: 160px)
-   -------------------------------------------------------------------------- */
+/* Standalone Sidebar (Hidden automatically by patientLayout.css when inside PatientLayout) */
 .miora-care-sidebar {
-  width: 160px;
-  min-width: 160px;
-  max-width: 160px;
+  width: 165px;
+  min-width: 165px;
+  max-width: 165px;
   background: #fdf4f6;
   border-right: 1px solid #f3dde3;
   display: flex;
   flex-direction: column;
-  padding: 18px 12px 14px 16px;
-  position: relative;
+  padding: 18px 12px 16px 16px;
+  position: sticky;
+  top: 0;
   height: 100vh;
   box-sizing: border-box;
   z-index: 30;
@@ -43,16 +62,15 @@
 
 .care-brand-link {
   display: inline-flex;
-  align-items: baseline;
   text-decoration: none;
 }
 
 .care-brand-script {
-  font-family: var(--serif, 'Playfair Display', Georgia, serif);
+  font-family: var(--patient-font-serif, 'Playfair Display', Georgia, serif);
   font-style: italic;
   font-weight: 700;
-  font-size: 32px;
-  letter-spacing: -0.025em;
+  font-size: 30px;
+  letter-spacing: -0.02em;
   color: #d8286a;
   line-height: 1;
 }
@@ -79,7 +97,7 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 2.5px;
+  gap: 3px;
 }
 
 .care-nav-item {
@@ -126,31 +144,30 @@
   letter-spacing: -0.01em;
 }
 
-/* Sidebar Footer (Profile, Settings) */
 .care-sidebar-footer {
   margin-top: auto;
   padding-top: 8px;
 }
 
 /* --------------------------------------------------------------------------
-   2. Main Content Viewport
+   2. Main Viewport & Bottom Decorative Wave
    -------------------------------------------------------------------------- */
 .miora-care-viewport {
   flex: 1;
   min-width: 0;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   position: relative;
-  background: radial-gradient(circle at 75% 15%, #fef3f7 0%, #fff6f8 40%, #fdf2f7 100%);
-  padding: 20px 28px 16px 14px;
+  background: radial-gradient(circle at 72% 14%, #fef3f7 0%, #fff7f9 45%, #fdf2f7 100%);
+  padding: 22px 32px 36px 26px;
   box-sizing: border-box;
   overflow-y: auto;
   overflow-x: hidden;
 }
 
-/* Bottom decorative wave spanning whole page */
-.care-shell-wave {
+/* Bottom decorative wave across screen */
+.care-bottom-wave-container {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -158,82 +175,83 @@
   width: 100%;
   height: 52px;
   pointer-events: none;
-  z-index: 10;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.care-shell-wave-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 /* --------------------------------------------------------------------------
-   3. Header Area
+   3. Header Row: Breadcrumb, Heading, Subtitle, Artwork & Top Right
    -------------------------------------------------------------------------- */
 .care-header-row {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   position: relative;
-  margin-bottom: 11px;
-  min-height: 82px;
+  margin-bottom: 16px;
+  min-height: 84px;
+  z-index: 5;
 }
 
 .care-header-text {
   display: flex;
   flex-direction: column;
-  z-index: 5;
-  max-width: 440px;
+  z-index: 10;
+  max-width: 480px;
 }
 
+/* Breadcrumb: Heart icon + Care Suggestions text */
 .care-breadcrumb {
   display: flex;
   align-items: center;
-  gap: 5px;
-  font-size: 11px;
-  color: #6c5a62;
-  margin-bottom: 7px;
+  gap: 6px;
+  font-size: 11.5px;
+  color: #271218;
+  font-weight: 500;
+  margin-bottom: 6px;
 }
 
-.care-breadcrumb-link {
+.care-breadcrumb-heart {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  color: #5c4951;
-  text-decoration: none;
-  font-weight: 500;
+  color: #271218;
 }
 
-.care-breadcrumb-link:hover {
-  color: #c73566;
-}
-
-.care-breadcrumb-sep {
-  font-size: 11px;
-  color: #8c7880;
-}
-
-.care-breadcrumb-current {
-  color: #241118;
+.care-breadcrumb-title {
+  color: #271218;
   font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
+/* Editorial Serif Page Title */
 .care-title {
-  font-family: var(--serif, 'Playfair Display', Georgia, serif);
-  font-size: 31px;
+  font-family: var(--patient-font-serif, 'Playfair Display', Georgia, serif);
+  font-size: 30px;
   font-weight: 700;
-  color: #1e0d16;
-  letter-spacing: -0.025em;
+  color: #1a0a10;
+  letter-spacing: -0.02em;
   margin: 0 0 5px 0;
-  line-height: 1.1;
+  line-height: 1.15;
 }
 
 .care-subtitle {
-  font-size: 11px;
-  color: #5a4750;
+  font-size: 11.5px;
+  color: #5a454f;
   line-height: 1.45;
   margin: 0;
+  letter-spacing: -0.005em;
 }
 
-/* Mother and Baby Illustration Banner */
+/* Maternal Illustration Banner on the right */
 .care-header-illustration-wrap {
   position: absolute;
-  top: -24px;
-  left: 450px;
+  top: -26px;
+  right: 140px;
   width: 250px;
   height: 145px;
   z-index: 2;
@@ -247,205 +265,253 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
+  opacity: 0.95;
 }
 
-/* User Controls (Bell + Profile) in Top Right */
+/* Top Right Actions (Bell + Sadiya Avatar) */
 .care-header-actions {
   display: flex;
   align-items: center;
-  gap: 12px;
-  z-index: 10;
-  margin-top: 1px;
+  gap: 16px;
+  z-index: 15;
+  padding-top: 2px;
+}
+
+.care-notif-container,
+.care-profile-container {
+  position: relative;
 }
 
 .care-icon-btn {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: #ffffff;
-  border: 1px solid #f2d9df;
-  display: flex;
+  background: transparent;
+  border: none;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #543e47;
   cursor: pointer;
+  color: #271218;
   position: relative;
   transition: all 120ms ease;
   padding: 0;
 }
 
 .care-icon-btn:hover {
-  background: #fdf5f7;
-  border-color: #e5b8c6;
-  color: #c73566;
+  opacity: 0.8;
+  transform: scale(1.05);
 }
 
 .care-notif-dot {
   position: absolute;
-  top: 6px;
-  right: 6px;
+  top: 2px;
+  right: 2px;
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #d93c75;
+  background: #dc266e;
+  box-shadow: 0 0 0 1.5px #fdf3f6;
 }
 
 .care-profile-pill {
-  display: flex;
-  align-items: center;
-  gap: 7px;
   background: transparent;
   border: none;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   cursor: pointer;
-  padding: 2px 4px 2px 2px;
-  border-radius: 20px;
+  transition: all 120ms ease;
+}
+
+.care-profile-pill:hover {
+  opacity: 0.85;
 }
 
 .care-avatar {
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
-  background: #ea6598;
+  background: #f17297;
   color: #ffffff;
-  display: flex;
+  font-size: 12px;
+  font-weight: 700;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 13px;
-  font-weight: 600;
 }
 
 .care-profile-name {
-  font-size: 11.5px;
+  font-size: 13px;
   font-weight: 600;
-  color: #2d1820;
+  color: #1a0a10;
 }
 
 .care-profile-chevron {
-  font-size: 9px;
-  color: #7b656e;
+  font-size: 11px;
+  color: #271218;
+  font-weight: 600;
+}
+
+/* Header Dropdowns */
+.care-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: #ffffff;
+  border: 1px solid #f0d5df;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(60, 20, 35, 0.12);
+  min-width: 220px;
+  max-width: 280px;
+  padding: 6px 0;
+  z-index: 100;
+}
+
+.care-dropdown-header {
+  padding: 8px 14px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #271218;
+  border-bottom: 1px solid #f6e4eb;
+  background: #fdf5f8;
+}
+
+.care-dropdown-item {
+  padding: 8px 14px;
+  font-size: 11.5px;
+  color: #3b2731;
+  cursor: pointer;
+  transition: background 120ms ease;
+}
+
+.care-dropdown-item:hover {
+  background: #fde6ee;
+}
+
+.care-dropdown-action {
+  color: #dc266e;
+  font-weight: 600;
+  text-align: center;
+  border-top: 1px solid #f6e4eb;
+  margin-top: 4px;
+}
+
+.care-dropdown-danger {
+  color: #dc266e;
+  font-weight: 600;
+  border-top: 1px solid #f6e4eb;
 }
 
 /* --------------------------------------------------------------------------
-   4. Navigation Tabs Row (5 Tabs)
+   4. Five Navigation Tabs
    -------------------------------------------------------------------------- */
 .care-tabs-nav {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 14px;
+  gap: 8px;
+  margin-bottom: 18px;
   z-index: 5;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-
-.care-tabs-nav::-webkit-scrollbar {
-  display: none;
+  flex-wrap: wrap;
 }
 
 .care-tab-btn {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  padding: 6.5px 16px;
-  border-radius: 22px;
-  font-size: 11.5px;
+  padding: 7px 16px;
+  border-radius: 9999px;
+  background: #ffffff;
+  border: 1px solid #f2d9e2;
+  color: #271218;
+  font-size: 12px;
   font-weight: 500;
   cursor: pointer;
-  white-space: nowrap;
   transition: all 140ms ease;
-  border: 1px solid #ebd4de;
-  background: #ffffff;
-  color: #2e1b23;
-  height: 32px;
-  box-sizing: border-box;
+  white-space: nowrap;
+  box-shadow: 0 1px 2px rgba(220, 38, 110, 0.03);
 }
 
 .care-tab-btn:hover {
-  background: #fdf0f4;
-  border-color: #e5b6c5;
+  background: #fdeef3;
+  border-color: #eecad7;
+  color: #d8286a;
 }
 
 .care-tab-btn.is-active {
-  background: #dc266e;
-  border-color: #dc266e;
+  background: #d8286a;
+  border-color: #d8286a;
   color: #ffffff;
   font-weight: 600;
-  box-shadow: 0 2px 6px rgba(220, 38, 110, 0.22);
+  box-shadow: 0 2px 8px rgba(216, 40, 106, 0.28);
 }
 
 .care-tab-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 15px;
-  height: 15px;
-  color: #c73566;
-}
-
-.care-tab-btn.is-active .care-tab-icon {
-  color: #ffffff;
 }
 
 /* --------------------------------------------------------------------------
-   5. Main Grid Layout (Left Content 549px + Right Column 250px)
+   5. Two-Column Main Content Grid
    -------------------------------------------------------------------------- */
 .care-main-grid {
   display: grid;
-  grid-template-columns: 549px 250px;
-  gap: 14px;
+  grid-template-columns: 1fr 285px;
+  gap: 18px;
+  align-items: start;
   z-index: 5;
 }
 
 .care-main-left {
   display: flex;
   flex-direction: column;
-  gap: 13px;
-  width: 549px;
+  gap: 16px;
+  min-width: 0;
 }
 
 .care-main-right {
   display: flex;
   flex-direction: column;
-  gap: 13px;
-  width: 250px;
+  gap: 14px;
 }
 
 /* --------------------------------------------------------------------------
-   6. Personalised Care Plan Card
+   6. Personalised Care Plan Card (Large Horizontal Card)
    -------------------------------------------------------------------------- */
 .care-card-plan {
   background: #ffffff;
-  border: 1px solid #f2dde4;
-  border-radius: 14px;
-  padding: 13px 18px;
-  box-shadow: 0 2px 8px rgba(230, 180, 195, 0.06);
+  border-radius: 18px;
+  border: 1px solid #f5e2e8;
+  padding: 16px 22px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  height: 105px;
-  box-sizing: border-box;
+  box-shadow: 0 2px 10px rgba(220, 38, 110, 0.04);
 }
 
 .plan-info-left {
   display: flex;
-  align-items: flex-start;
-  gap: 12px;
+  align-items: center;
+  gap: 14px;
   flex: 1;
+  min-width: 0;
 }
 
 .plan-badge-icon {
-  width: 38px;
-  height: 38px;
-  min-width: 38px;
-  border-radius: 8px;
-  background: #fde8ee;
-  border: 1px solid #f9cfdc;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #fde6ee;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #dc266e;
-  margin-top: 1px;
+  flex-shrink: 0;
+}
+
+.plan-badge-icon.is-neutral {
+  background: #f3ebef;
 }
 
 .plan-text-content {
@@ -454,27 +520,29 @@
 }
 
 .plan-title {
-  font-family: var(--serif, 'Playfair Display', Georgia, serif);
-  font-size: 16px;
+  font-family: var(--patient-font-serif, 'Playfair Display', Georgia, serif);
+  font-size: 17px;
   font-weight: 700;
-  color: #1e0d16;
+  color: #1a0a10;
   margin: 0 0 3px 0;
   letter-spacing: -0.015em;
+  line-height: 1.25;
 }
 
 .plan-desc {
   font-size: 11px;
-  color: #58464e;
+  color: #604e57;
+  line-height: 1.4;
   margin: 0;
-  line-height: 1.36;
-  max-width: 320px;
+  max-width: 380px;
 }
 
 .plan-info-right {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  min-width: 175px;
+  flex-shrink: 0;
+  min-width: 170px;
 }
 
 .plan-meta-row {
@@ -484,13 +552,14 @@
 }
 
 .plan-meta-icon {
-  width: 17px;
-  height: 17px;
-  min-width: 17px;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background: #fde8f0;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #dc266e;
+  flex-shrink: 0;
 }
 
 .plan-meta-text {
@@ -500,25 +569,55 @@
 
 .plan-meta-label {
   font-size: 9.5px;
-  color: #75616b;
-  line-height: 1.1;
+  color: #7a6671;
   font-weight: 500;
+  line-height: 1.1;
 }
 
 .plan-meta-value {
   font-size: 11.5px;
-  font-weight: 600;
-  color: #1e0d16;
+  color: #1a0a10;
+  font-weight: 700;
   line-height: 1.25;
 }
 
+/* Empty State variation for Care Plan card */
+.care-card-plan.is-empty-state {
+  border-style: dashed;
+  border-color: #eed6df;
+  background: #fffdfd;
+}
+
+.plan-empty-actions {
+  flex-shrink: 0;
+}
+
+.plan-action-screening-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #d8286a;
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  font-size: 11.5px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 120ms ease;
+  box-shadow: 0 2px 8px rgba(216, 40, 106, 0.25);
+}
+
+.plan-action-screening-btn:hover {
+  background: #c3205d;
+}
+
 /* --------------------------------------------------------------------------
-   7. Today's Care Suggestions Section
+   7. Today's Care Suggestions (3 Cards Grid)
    -------------------------------------------------------------------------- */
 .care-suggestions-section {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 .suggestions-header-row {
@@ -528,10 +627,10 @@
 }
 
 .suggestions-section-title {
-  font-family: var(--serif, 'Playfair Display', Georgia, serif);
-  font-size: 17px;
+  font-family: var(--patient-font-serif, 'Playfair Display', Georgia, serif);
+  font-size: 18px;
   font-weight: 700;
-  color: #1e0d16;
+  color: #1a0a10;
   margin: 0;
   letter-spacing: -0.015em;
 }
@@ -540,73 +639,71 @@
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  background: #fdebf0;
-  border: 1px solid #f6cfdc;
-  color: #dc266e;
-  border-radius: 12px;
-  padding: 3px 9px;
-  font-size: 10.5px;
+  background: #ffffff;
+  border: 1px solid #f0d5df;
+  border-radius: 9999px;
+  padding: 4px 10px;
+  font-size: 11px;
   font-weight: 600;
+  color: #271218;
 }
 
 .suggestions-cards-grid {
   display: grid;
-  grid-template-columns: repeat(3, 173px);
-  gap: 14px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 13px;
 }
 
 .suggestion-card {
   background: #ffffff;
-  border: 1px solid #f2dde4;
-  border-radius: 13px;
-  padding: 8px 8px 10px 8px;
-  box-shadow: 0 2px 6px rgba(230, 180, 195, 0.06);
+  border-radius: 18px;
+  border: 1px solid #f5e2e8;
+  padding: 12px 14px 14px 14px;
   display: flex;
   flex-direction: column;
-  height: 172px;
-  box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(220, 38, 110, 0.03);
   transition: transform 120ms ease, box-shadow 120ms ease;
 }
 
 .suggestion-card:hover {
   transform: translateY(-1px);
-  box-shadow: 0 4px 10px rgba(220, 150, 175, 0.12);
+  box-shadow: 0 4px 14px rgba(220, 38, 110, 0.07);
 }
 
 .suggestion-img-wrap {
   width: 100%;
-  height: 80px;
-  border-radius: 9px;
-  background: #fde8ee;
+  height: 98px;
+  border-radius: 12px;
   overflow: hidden;
+  background: #fde8f0;
+  margin-bottom: 9px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 7px;
 }
 
 .suggestion-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
 }
 
 .suggestion-card-title {
-  font-family: var(--serif, 'Playfair Display', Georgia, serif);
-  font-size: 13.5px;
+  font-family: var(--patient-font-serif, 'Playfair Display', Georgia, serif);
+  font-size: 14.5px;
   font-weight: 700;
-  color: #1e0d16;
-  margin: 0 0 2px 0;
-  line-height: 1.2;
+  color: #1a0a10;
+  margin: 0 0 3px 0;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
 }
 
 .suggestion-card-desc {
-  font-size: 10px;
-  color: #6a5760;
-  margin: 0 0 7px 0;
+  font-size: 11px;
+  color: #604e57;
   line-height: 1.35;
-  min-height: 27px;
+  margin: 0 0 10px 0;
+  min-height: 30px;
 }
 
 .suggestion-action-btn {
@@ -615,73 +712,187 @@
   justify-content: center;
   gap: 6px;
   width: 100%;
-  height: 28px;
-  padding: 0 10px;
-  border-radius: 18px;
-  font-size: 10.5px;
-  font-weight: 500;
+  padding: 6.5px 12px;
+  border-radius: 9999px;
+  background: #ffffff;
+  border: 1px solid #ebd0da;
+  color: #271218;
+  font-size: 11.5px;
+  font-weight: 600;
   cursor: pointer;
   transition: all 120ms ease;
-  border: 1px solid #eed2dc;
-  background: #ffffff;
-  color: #241118;
   margin-top: auto;
-  box-sizing: border-box;
 }
 
 .suggestion-action-btn:hover {
-  background: #fdf0f4;
-  border-color: #e5b6c5;
+  background: #fdf2f6;
+  border-color: #dfbac9;
 }
 
+/* Card 1 Start Button (Soft Pink Pill matching reference) */
 .suggestion-action-btn.is-primary {
-  background: #fdeaf1;
-  border-color: #f6cedb;
-  color: #241118;
-  font-weight: 600;
+  background: #fde6ee;
+  border-color: #f7cad8;
+  color: #271218;
 }
 
 .suggestion-action-btn.is-primary:hover {
-  background: #fcdde6;
+  background: #fcd5e3;
+  border-color: #f2b4c6;
 }
 
 .suggestion-btn-play {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: 14px;
-  height: 14px;
-  color: #dc266e;
 }
 
 /* --------------------------------------------------------------------------
-   8. Right Column: Your Progress Card
+   8. Tabs Content Panels (Self-Care, Mood Support, Lifestyle, Resources)
+   -------------------------------------------------------------------------- */
+.care-tab-content-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tab-panel-intro {
+  margin-bottom: 2px;
+}
+
+.tab-panel-title {
+  font-family: var(--patient-font-serif, 'Playfair Display', Georgia, serif);
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a0a10;
+  margin: 0 0 3px 0;
+}
+
+.tab-panel-desc {
+  font-size: 11.5px;
+  color: #604e57;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Resources List */
+.resources-cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.resource-list-item {
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid #f5e2e8;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 2px 6px rgba(220, 38, 110, 0.03);
+}
+
+.resource-item-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #fde6ee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.resource-item-body {
+  flex: 1;
+}
+
+.resource-item-title {
+  font-family: var(--patient-font-serif, 'Playfair Display', Georgia, serif);
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a0a10;
+  margin: 0 0 2px 0;
+}
+
+.resource-item-desc {
+  font-size: 11px;
+  color: #604e57;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.resource-external-link,
+.resource-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  background: #fde6ee;
+  border: 1px solid #f7cad8;
+  color: #dc266e;
+  font-size: 11px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 120ms ease;
+}
+
+.resource-external-link:hover,
+.resource-download-btn:hover {
+  background: #fcd5e3;
+}
+
+/* Clinical disclaimer footer note */
+.care-clinical-disclaimer {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  background: #fff8fb;
+  border: 1px solid #f2dde5;
+  border-radius: 10px;
+  padding: 9px 12px;
+  font-size: 10.5px;
+  color: #6a5761;
+  line-height: 1.35;
+  margin-top: 4px;
+}
+
+.disclaimer-icon {
+  font-weight: 700;
+  color: #dc266e;
+  font-size: 12px;
+}
+
+/* --------------------------------------------------------------------------
+   9. Right Column: Your Progress Card
    -------------------------------------------------------------------------- */
 .care-card-progress {
   background: #ffffff;
-  border: 1px solid #f2dde4;
-  border-radius: 14px;
-  padding: 13px 14px;
-  box-shadow: 0 2px 8px rgba(230, 180, 195, 0.06);
+  border-radius: 18px;
+  border: 1px solid #f5e2e8;
+  padding: 16px 18px;
   display: flex;
   flex-direction: column;
-  height: 192px;
-  box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(220, 38, 110, 0.03);
 }
 
 .progress-card-title {
-  font-family: var(--serif, 'Playfair Display', Georgia, serif);
-  font-size: 16px;
+  font-family: var(--patient-font-serif, 'Playfair Display', Georgia, serif);
+  font-size: 17px;
   font-weight: 700;
-  color: #1e0d16;
-  margin: 0 0 8px 0;
+  color: #1a0a10;
+  margin: 0 0 12px 0;
   letter-spacing: -0.015em;
 }
 
 .progress-body-row {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 14px;
 }
 
 /* Circular Gauge Ring */
@@ -689,72 +900,67 @@
   position: relative;
   width: 90px;
   height: 90px;
-  min-width: 90px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-shrink: 0;
 }
 
 .progress-gauge-svg {
-  transform: rotate(-70deg);
-  width: 90px;
-  height: 90px;
+  width: 100%;
+  height: 100%;
+  transform: rotate(35deg);
 }
 
 .progress-gauge-track {
   fill: none;
-  stroke: #fae3ec;
-  stroke-width: 8;
+  stroke: #fde2ec;
+  stroke-width: 6;
 }
 
 .progress-gauge-bar {
   fill: none;
-  stroke: #e0286e;
-  stroke-width: 8;
+  stroke: #dc266e;
+  stroke-width: 6;
   stroke-linecap: round;
-  transition: stroke-dashoffset 300ms ease;
+  transition: stroke-dashoffset 350ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .progress-gauge-text {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  right: 0;
+  bottom: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  pointer-events: none;
 }
 
 .gauge-fraction {
-  font-family: var(--serif, 'Playfair Display', Georgia, serif);
-  font-style: italic;
-  font-size: 21px;
+  font-size: 18px;
   font-weight: 700;
-  color: #1e0d16;
+  color: #1a0a10;
   line-height: 1;
   letter-spacing: -0.02em;
 }
 
 .gauge-subtext {
   font-size: 8.5px;
-  color: #6c5963;
+  color: #6a5761;
+  font-weight: 600;
   line-height: 1.15;
   margin-top: 3px;
-  font-weight: 500;
+  text-transform: capitalize;
 }
 
-/* Checklist of 7 care activities */
+/* Task Checklist */
 .progress-tasks-list {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 3.5px;
+  gap: 5px;
   flex: 1;
 }
 
@@ -762,83 +968,98 @@
   display: flex;
   align-items: center;
   gap: 7px;
-  font-size: 11px;
-  color: #5c4a52;
   cursor: pointer;
+  padding: 2.5px 4px;
+  border-radius: 6px;
+  transition: background 120ms ease;
   user-select: none;
-  padding: 1px 0;
-  transition: color 120ms ease;
-  white-space: nowrap;
 }
 
 .progress-task-item:hover {
-  color: #dc266e;
-}
-
-.progress-task-item.is-completed {
-  color: #1e0d16;
-  font-weight: 500;
+  background: #fdeef3;
 }
 
 .task-check-circle {
-  width: 13px;
-  height: 13px;
-  min-width: 13px;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: all 120ms ease;
+  flex-shrink: 0;
+  transition: all 140ms ease;
 }
 
 .task-check-circle.completed {
   background: #22c55e;
-  color: #ffffff;
+  border: 1px solid #16a34a;
 }
 
 .task-check-circle.pending {
-  border: 1.5px solid #d4b8c5;
   background: transparent;
+  border: 1.5px solid #d4c1ca;
 }
 
 .task-name {
-  line-height: 1.2;
+  font-size: 11px;
+  color: #271218;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.progress-task-item.is-completed .task-name {
+  color: #271218;
+}
+
+/* Empty state for Progress card */
+.progress-empty-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 8px 0;
+}
+
+.progress-gauge-wrap.is-empty .progress-gauge-track {
+  stroke: #e6d3dc;
+}
+
+.progress-empty-msg {
+  font-size: 10.5px;
+  color: #74606b;
+  margin: 10px 0 0 0;
+  line-height: 1.35;
 }
 
 /* --------------------------------------------------------------------------
-   9. Right Column: Need More Support? Card
+   10. Right Column: Need More Support? Card
    -------------------------------------------------------------------------- */
 .care-card-support {
   background: #ffffff;
-  border: 1px solid #f2dde4;
-  border-radius: 14px;
-  padding: 12px 14px;
-  box-shadow: 0 2px 8px rgba(230, 180, 195, 0.06);
+  border-radius: 18px;
+  border: 1px solid #f5e2e8;
+  padding: 16px 18px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  height: 106px;
-  box-sizing: border-box;
+  gap: 12px;
+  box-shadow: 0 2px 8px rgba(220, 38, 110, 0.03);
 }
 
 .support-header-row {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
+  gap: 11px;
 }
 
 .support-icon-wrap {
-  width: 32px;
-  height: 32px;
-  min-width: 32px;
-  border-radius: 50%;
-  background: #fdecf1;
-  border: 1px solid #f8d3df;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: #fde6ee;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #dc266e;
-  margin-top: 1px;
+  flex-shrink: 0;
 }
 
 .support-text-wrap {
@@ -847,217 +1068,485 @@
 }
 
 .support-title {
-  font-family: var(--serif, 'Playfair Display', Georgia, serif);
-  font-size: 14px;
+  font-family: var(--patient-font-serif, 'Playfair Display', Georgia, serif);
+  font-size: 15px;
   font-weight: 700;
-  color: #1e0d16;
+  color: #1a0a10;
   margin: 0 0 2px 0;
   letter-spacing: -0.01em;
 }
 
 .support-desc {
-  font-size: 9.5px;
-  color: #6c5963;
-  margin: 0;
+  font-size: 10.5px;
+  color: #604e57;
   line-height: 1.35;
+  margin: 0;
 }
 
 .support-action-btn {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   gap: 7px;
-  width: auto;
-  align-self: center;
-  padding: 5.5px 18px;
-  border-radius: 20px;
-  font-size: 10.5px;
+  width: 100%;
+  padding: 8px 14px;
+  border-radius: 9999px;
+  background: #ffffff;
+  border: 1px solid #d8c2cc;
+  color: #271218;
+  font-size: 11.5px;
   font-weight: 600;
+  text-decoration: none;
   cursor: pointer;
   transition: all 120ms ease;
-  border: 1px solid #eed2dc;
-  background: #ffffff;
-  color: #241118;
-  text-decoration: none;
+  box-sizing: border-box;
 }
 
 .support-action-btn:hover {
-  background: #fdf0f4;
-  border-color: #dc266e;
+  background: #fde8f0;
+  border-color: #c9afbb;
   color: #dc266e;
 }
 
 /* --------------------------------------------------------------------------
-   10. Interactive Modals
+   11. Interactive Modals (Breathing, Sleep, Journal, Self-Care)
    -------------------------------------------------------------------------- */
 .care-modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(36, 17, 24, 0.45);
+  background: rgba(30, 10, 20, 0.45);
   backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 100;
+  z-index: 1000;
   padding: 16px;
+  animation: careModalFadeIn 150ms ease-out;
+}
+
+@keyframes careModalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .care-modal-card {
   background: #ffffff;
-  border-radius: 18px;
-  border: 1px solid #f4d0dd;
-  box-shadow: 0 16px 36px rgba(210, 80, 120, 0.18);
-  max-width: 440px;
+  border-radius: 20px;
+  border: 1px solid #f2dae3;
+  box-shadow: 0 16px 40px rgba(50, 10, 25, 0.2);
   width: 100%;
-  padding: 22px;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 24px;
   position: relative;
-  display: flex;
-  flex-direction: column;
+  box-sizing: border-box;
+  animation: careModalSlideUp 180ms ease-out;
+}
+
+@keyframes careModalSlideUp {
+  from { transform: translateY(12px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
 .care-modal-close {
   position: absolute;
-  top: 14px;
-  right: 14px;
+  top: 16px;
+  right: 16px;
   background: #fdf2f6;
-  border: 1px solid #f2d2dc;
+  border: 1px solid #f2dae2;
   border-radius: 50%;
   width: 28px;
   height: 28px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
-  color: #5c4a52;
   cursor: pointer;
+  color: #553d48;
+  font-size: 12px;
+  transition: all 120ms ease;
 }
 
 .care-modal-close:hover {
-  background: #fae4ec;
-  color: #c73566;
+  background: #fce4ee;
+  color: #dc266e;
 }
 
 .care-modal-title {
-  font-family: var(--serif, 'Playfair Display', Georgia, serif);
-  font-size: 18px;
+  font-family: var(--patient-font-serif, 'Playfair Display', Georgia, serif);
+  font-size: 20px;
   font-weight: 700;
-  color: #200f16;
+  color: #1a0a10;
   margin: 0 0 6px 0;
 }
 
 .care-modal-desc {
-  font-size: 11.5px;
-  color: #6a5760;
-  margin: 0 0 16px 0;
+  font-size: 12px;
+  color: #604e57;
   line-height: 1.45;
+  margin: 0 0 18px 0;
 }
 
-.breathing-circle-wrap {
+.care-modal-submit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  padding: 10px 18px;
+  border-radius: 9999px;
+  background: #d8286a;
+  border: none;
+  color: #ffffff;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 120ms ease;
+  box-shadow: 0 2px 8px rgba(216, 40, 106, 0.3);
+}
+
+.care-modal-submit-btn:hover:not(:disabled) {
+  background: #c3205d;
+}
+
+.care-modal-submit-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Breathing Animation Canvas */
+.breathing-stage-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px 0;
+  padding: 18px 0;
 }
 
-.breathing-bubble {
-  width: 110px;
-  height: 110px;
+.breathing-circle-outer {
+  width: 160px;
+  height: 160px;
   border-radius: 50%;
-  background: radial-gradient(circle, #fce5ee 0%, #f7bed2 100%);
-  border: 2px solid #eb8cb1;
+  background: #fde6ee;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #b52059;
-  font-weight: 700;
-  font-size: 14px;
-  animation: breatheCycle 8s infinite ease-in-out;
+  transition: transform 3.8s ease-in-out, background 3.8s ease-in-out;
 }
 
-@keyframes breatheCycle {
-  0%, 100% {
-    transform: scale(0.9);
-    box-shadow: 0 0 10px rgba(220, 38, 110, 0.15);
-  }
-  50% {
-    transform: scale(1.22);
-    box-shadow: 0 0 25px rgba(220, 38, 110, 0.35);
-  }
+.breathing-circle-outer.inhale {
+  transform: scale(1.35);
+  background: #fcd2e1;
+}
+
+.breathing-circle-outer.hold-in {
+  transform: scale(1.35);
+  background: #f8c1d5;
+}
+
+.breathing-circle-outer.exhale {
+  transform: scale(1);
+  background: #fde8f0;
+}
+
+.breathing-circle-outer.hold-out {
+  transform: scale(1);
+  background: #fde8f0;
+}
+
+.breathing-circle-outer.paused {
+  transition: none !important;
+}
+
+.breathing-circle-inner {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid #dc266e;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 4px 14px rgba(220, 38, 110, 0.15);
+}
+
+.breathing-phase-label {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #dc266e;
+}
+
+.breathing-seconds-counter {
+  font-size: 16px;
+  font-weight: 800;
+  color: #1a0a10;
+  margin-top: 2px;
+}
+
+.breathing-meta-info {
+  margin-top: 14px;
+  font-size: 11px;
+  color: #6a5761;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.meta-dot {
+  color: #dc266e;
+}
+
+.breathing-controls-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.breathing-ctrl-btn {
+  padding: 8px 14px;
+  border-radius: 9999px;
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 120ms ease;
+}
+
+.breathing-ctrl-btn.is-pause,
+.breathing-ctrl-btn.is-resume {
+  background: #fde6ee;
+  border: 1px solid #f7cad8;
+  color: #271218;
+}
+
+.breathing-ctrl-btn.is-reset {
+  background: #ffffff;
+  border: 1px solid #ebd0da;
+  color: #553d48;
+}
+
+.breathing-ctrl-btn.is-complete {
+  flex: 1;
+  background: #d8286a;
+  border: none;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(216, 40, 106, 0.25);
+}
+
+.breathing-ctrl-btn.is-complete:hover {
+  background: #c3205d;
+}
+
+/* Sleep Tips Modal Content */
+.sleep-tips-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.sleep-tip-card {
+  background: #fff8fb;
+  border: 1px solid #f5e2e9;
+  border-radius: 12px;
+  padding: 10px 12px;
+}
+
+.sleep-tip-card strong {
+  display: block;
+  font-size: 12px;
+  color: #1a0a10;
+  margin-bottom: 2px;
+}
+
+.sleep-tip-card p {
+  font-size: 11px;
+  color: #604e57;
+  line-height: 1.35;
+  margin: 0;
+}
+
+/* Journaling Modal */
+.journal-mood-chips {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.mood-chip-btn {
+  background: #ffffff;
+  border: 1px solid #eed6e0;
+  border-radius: 9999px;
+  padding: 4px 10px;
+  font-size: 11px;
+  color: #4a343e;
+  cursor: pointer;
+  transition: all 120ms ease;
+}
+
+.mood-chip-btn:hover {
+  background: #fdecf2;
+  border-color: #dfbac9;
+}
+
+.mood-chip-btn.is-selected {
+  background: #dc266e;
+  border-color: #dc266e;
+  color: #ffffff;
+  font-weight: 600;
 }
 
 .journal-textarea {
   width: 100%;
-  height: 90px;
-  border-radius: 10px;
-  border: 1px solid #ebd0db;
-  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid #ebd0da;
+  padding: 10px 12px;
   font-family: inherit;
   font-size: 12px;
-  color: #200f16;
-  resize: none;
-  outline: none;
+  line-height: 1.45;
+  color: #271218;
+  background: #fffafc;
+  resize: vertical;
   box-sizing: border-box;
-  margin-bottom: 14px;
-  background: #fdfbfb;
 }
 
 .journal-textarea:focus {
+  outline: none;
   border-color: #dc266e;
   background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(220, 38, 110, 0.12);
 }
 
-.care-modal-submit-btn {
-  background: #dc266e;
-  color: #ffffff;
-  border: none;
-  border-radius: 20px;
-  padding: 8px 18px;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  align-self: flex-end;
-  transition: all 120ms ease;
+.journal-form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  margin-bottom: 16px;
 }
 
-.care-modal-submit-btn:hover {
-  background: #c21e5e;
+.journal-char-count {
+  font-size: 10px;
+  color: #7a6671;
 }
 
-/* Dropdown menus */
-.care-dropdown-menu {
-  position: absolute;
-  top: 38px;
-  right: 0;
-  background: #ffffff;
-  border: 1px solid #f2dde4;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(210, 100, 130, 0.15);
-  min-width: 220px;
-  z-index: 50;
-  padding: 8px;
+.journal-history-section {
+  border-top: 1px solid #f4e0e8;
+  padding-top: 12px;
 }
 
-.care-dropdown-header {
-  padding: 6px 10px;
-  font-weight: 600;
-  font-size: 11px;
-  color: #200f16;
-  border-bottom: 1px solid #f7e6ec;
-  margin-bottom: 4px;
+.journal-history-title {
+  font-family: var(--patient-font-serif, 'Playfair Display', Georgia, serif);
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #1a0a10;
+  margin: 0 0 8px 0;
 }
 
-.care-dropdown-item {
-  padding: 6px 10px;
-  font-size: 11px;
-  color: #4a3840;
-  border-radius: 6px;
-  cursor: pointer;
+.journal-entries-scroll {
   display: flex;
   flex-direction: column;
+  gap: 8px;
+  max-height: 140px;
+  overflow-y: auto;
 }
 
-.care-dropdown-item:hover {
-  background: #fdf2f6;
-  color: #c73566;
+.saved-entry-card {
+  background: #fdf5f8;
+  border-radius: 10px;
+  border: 1px solid #f4dde5;
+  padding: 8px 10px;
+}
+
+.saved-entry-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3px;
+}
+
+.saved-entry-mood {
+  font-size: 10px;
+  font-weight: 700;
+  color: #dc266e;
+}
+
+.saved-entry-date {
+  font-size: 9.5px;
+  color: #7a6671;
+}
+
+.saved-entry-text {
+  font-size: 11px;
+  color: #3b2731;
+  line-height: 1.35;
+  margin: 0;
+}
+
+/* Other Modals (Muscle Relax, Grounding, Reframing) */
+.muscle-relax-steps,
+.grounding-list {
+  padding-left: 18px;
+  font-size: 11.5px;
+  color: #44303a;
+  line-height: 1.6;
+  margin: 0 0 18px 0;
+}
+
+.reframing-pairs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.reframing-pair {
+  background: #fff8fb;
+  border: 1px solid #f5e2e9;
+  border-radius: 12px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.thought-harsh {
+  font-size: 11px;
+  color: #b91c1c;
+  font-weight: 600;
+}
+
+.thought-balanced {
+  font-size: 11.5px;
+  color: #166534;
+  line-height: 1.35;
+}
+
+/* --------------------------------------------------------------------------
+   12. Responsive Adjustments
+   -------------------------------------------------------------------------- */
+@media (max-width: 960px) {
+  .care-main-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .care-card-plan {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .plan-info-right {
+    border-left: none;
+    border-top: 1px solid #f6e6ec;
+    padding-left: 0;
+    padding-top: 12px;
+    width: 100%;
+  }
+
+  .suggestions-cards-grid {
+    grid-template-columns: 1fr;
+  }
 }

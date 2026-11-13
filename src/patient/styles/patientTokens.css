@@ -1,0 +1,67 @@
+/**
+ * MIORA PATIENT PORTAL — CENTRALIZED DESIGN TOKENS
+ * Single source of truth for patient portal colors, typography, spacing, and elevation.
+ */
+
+:root {
+  /* Surface & Background Colors */
+  --patient-bg: #fdf5f7;
+  --patient-card-bg: #ffffff;
+  --patient-sidebar-bg: #fdf3f6;
+  --patient-sidebar-border: rgba(228, 168, 185, 0.35);
+  --patient-header-bg: #fdf4f6;
+  --patient-header-border: rgba(228, 168, 185, 0.28);
+  --patient-border: #f3dde3;
+  --patient-border-subtle: #fae9ee;
+  --patient-border-hover: #e8b8c7;
+
+  /* Primary Accent: Miora Raspberry Pink */
+  --patient-primary: #c83264;
+  --patient-primary-hover: #b02654;
+  --patient-primary-active: #9b1e47;
+  --patient-primary-subtle: #fcf1f4;
+  --patient-primary-light: #fde8ef;
+  --patient-primary-glow: rgba(200, 50, 100, 0.15);
+
+  /* Secondary Accents */
+  --patient-secondary: #e76f51;
+  --patient-success: #2a9d8f;
+  --patient-success-bg: #eaf6f4;
+  --patient-warning: #e9c46a;
+  --patient-warning-bg: #fef8eb;
+  --patient-error: #d90429;
+  --patient-error-bg: #fde8ec;
+
+  /* Typography Colors */
+  --patient-text-primary: #241118;
+  --patient-text-body: #3b252e;
+  --patient-text-muted: #72515d;
+  --patient-text-subtle: #967582;
+  --patient-text-inverse: #ffffff;
+
+  /* Layout Dimensions */
+  --patient-sidebar-width: 172px;
+  --patient-header-height: 56px;
+
+  /* Typography Families */
+  --patient-font-serif: "Newsreader", "Playfair Display", Georgia, serif;
+  --patient-font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  /* Radii */
+  --patient-radius-xs: 4px;
+  --patient-radius-sm: 6px;
+  --patient-radius-md: 10px;
+  --patient-radius-lg: 14px;
+  --patient-radius-xl: 18px;
+  --patient-radius-pill: 9999px;
+
+  /* Elevation Shadows */
+  --patient-shadow-sm: 0 1px 3px rgba(36, 17, 24, 0.04);
+  --patient-shadow-card: 0 2px 8px rgba(200, 50, 100, 0.04), 0 1px 3px rgba(36, 17, 24, 0.03);
+  --patient-shadow-hover: 0 4px 14px rgba(200, 50, 100, 0.08), 0 2px 6px rgba(36, 17, 24, 0.04);
+  --patient-shadow-dropdown: 0 8px 24px rgba(36, 17, 24, 0.12), 0 2px 6px rgba(36, 17, 24, 0.05);
+
+  /* Transitions */
+  --patient-transition-fast: 150ms ease;
+  --patient-transition-normal: 220ms ease;
+}

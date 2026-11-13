@@ -11,8 +11,8 @@ export const DEMO_ACCOUNTS = {
     email: 'patient@miora.health',
     password: 'password123',
     role: 'patient',
-    name: 'Amara K.',
-    postpartumWeek: 6,
+    name: 'Sadiya Rahman',
+    postpartumWeek: 4,
   },
   doctor: {
     email: 'doctor@miora.health',
@@ -148,7 +148,7 @@ export async function authenticate({ email, password, selectedRole }) {
   const authenticatedUser = {
     email: trimmedEmail,
     role: accountRole,
-    name: accountName || (accountRole === 'doctor' ? 'Dr. Elena Rostova' : 'Amara K.'),
+    name: accountName || (accountRole === 'doctor' ? 'Dr. Elena Rostova' : 'Sadiya Rahman'),
     authenticatedAt: new Date().toISOString(),
   };
 

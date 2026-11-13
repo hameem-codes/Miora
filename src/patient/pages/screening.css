@@ -12,7 +12,10 @@
   color: #271218;
   font-family: var(--sans, 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
   overflow: hidden;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
   box-sizing: border-box;
 }
 
@@ -445,7 +448,7 @@
    -------------------------------------------------------------------------- */
 .screening-main-layout {
   display: grid;
-  grid-template-columns: 318px 1fr;
+  grid-template-columns: 330px 1fr;
   gap: 18px;
   padding: 4px 24px 0 24px;
   height: 355px;
@@ -459,6 +462,7 @@
   display: flex;
   flex-direction: column;
   height: 355px;
+  position: relative;
 }
 
 .screening-video-frame {
@@ -469,15 +473,20 @@
   overflow: hidden;
   box-shadow: 0 4px 16px rgba(160, 60, 80, 0.06);
   border: 1px solid #f2d7df;
-  background: #ebd8df;
+  background: #2a1c22;
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.screening-video-img {
+/* Real Live Video HTML Element */
+.screening-video-element {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  transform: scaleX(-1); /* Mirror selfie camera feed for natural view */
+  background: #2a1c22;
 }
 
 .screening-video-off-placeholder {
@@ -506,6 +515,172 @@
   justify-content: center;
 }
 
+/* Consent State Card inside Video Frame */
+.screening-consent-panel {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(150deg, #ffffff 0%, #fdf2f5 55%, #fcecf1 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 22px 18px;
+  text-align: center;
+  box-sizing: border-box;
+  color: #271218;
+}
+
+.screening-consent-icon-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #fde2ec;
+  color: #c73566;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  box-shadow: 0 3px 10px rgba(199, 53, 102, 0.15);
+}
+
+.screening-consent-title {
+  font-family: var(--serif, 'Playfair Display', Georgia, serif);
+  font-size: 17.5px;
+  font-weight: 700;
+  color: #241118;
+  margin: 0 0 5px 0;
+  line-height: 1.2;
+}
+
+.screening-consent-desc {
+  font-size: 11px;
+  line-height: 1.45;
+  color: #5c4a52;
+  margin: 0 0 13px 0;
+  max-width: 275px;
+}
+
+.screening-consent-checkbox-wrap {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  text-align: left;
+  font-size: 10.5px;
+  color: #3b2830;
+  line-height: 1.35;
+  margin-bottom: 14px;
+  cursor: pointer;
+  max-width: 275px;
+}
+
+.screening-consent-checkbox {
+  margin-top: 1.5px;
+  accent-color: #c73566;
+  cursor: pointer;
+}
+
+.screening-start-btn {
+  background: #c73566;
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  padding: 7px 22px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(199, 53, 102, 0.28);
+  transition: all 160ms cubic-bezier(0.23, 1, 0.32, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.screening-start-btn:hover:not(:disabled) {
+  background: #b52959;
+  transform: translateY(-1px);
+}
+
+.screening-start-btn:disabled {
+  background: #e2cad0;
+  color: #8c7882;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Loading, Error and Permission Denied States */
+.screening-video-state-overlay {
+  width: 100%;
+  height: 100%;
+  background: #25161d;
+  color: #fce7ee;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 22px;
+  text-align: center;
+  box-sizing: border-box;
+  gap: 8px;
+}
+
+.screening-video-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  border-top-color: #ec7e9e;
+  border-radius: 50%;
+  animation: screeningSpin 0.9s linear infinite;
+  margin-bottom: 4px;
+}
+
+@keyframes screeningSpin {
+  to { transform: rotate(360deg); }
+}
+
+.screening-state-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.screening-state-desc {
+  font-size: 11px;
+  color: #e5c3cd;
+  line-height: 1.4;
+  margin: 0;
+  max-width: 250px;
+}
+
+.screening-error-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(235, 59, 90, 0.18);
+  color: #ff6b81;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.screening-retry-btn {
+  margin-top: 6px;
+  background: #c73566;
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  padding: 6px 18px;
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 140ms ease;
+}
+
+.screening-retry-btn:hover {
+  background: #b52959;
+}
+
 /* Video Top Bar Overlay */
 .screening-video-top-bar {
   position: absolute;
@@ -516,6 +691,7 @@
   align-items: center;
   justify-content: space-between;
   z-index: 5;
+  pointer-events: auto;
 }
 
 .screening-recording-badge {
@@ -589,6 +765,7 @@
   bottom: 10px;
   left: 10px;
   z-index: 5;
+  pointer-events: auto;
 }
 
 .screening-live-tag {
@@ -829,7 +1006,7 @@
   display: flex;
   align-items: center;
   gap: 2px;
-  height: 15px;
+  height: 16px;
 }
 
 .wave-line {
@@ -837,6 +1014,8 @@
   background: #c73566;
   border-radius: 2px;
   opacity: 0.85;
+  transition: height 0.08s ease;
+  min-height: 2px;
 }
 
 .w-1 { height: 4px; }
@@ -864,6 +1043,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 8px;
+}
+
+.screening-transcribed-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
 }
 
 .screening-transcribed-text {
@@ -871,17 +1058,34 @@
   color: #2b171f;
   margin: 0;
   font-weight: 500;
+  line-height: 1.35;
 }
 
-.screening-audio-check {
-  width: 14px;
-  height: 14px;
+.screening-transcribed-notice {
+  font-size: 9.5px;
+  color: #8c7882;
+  font-style: italic;
+}
+
+.screening-audio-check-btn {
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   background: #ec7e9e;
   color: #ffffff;
+  border: none;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0;
+  transition: all 140ms ease;
+  flex-shrink: 0;
+}
+
+.screening-audio-check-btn:hover {
+  background: #c73566;
+  transform: scale(1.15);
 }
 
 /* --------------------------------------------------------------------------

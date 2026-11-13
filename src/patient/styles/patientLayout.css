@@ -1,0 +1,349 @@
+/**
+ * MIORA PATIENT PORTAL — SHARED LAYOUT STYLES
+ * Handles the unified outer shell, sidebar positioning, top header, and content viewport.
+ */
+
+@import './patientTokens.css';
+
+/* Outer Shell */
+.miora-patient-layout {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  background: var(--patient-bg);
+  color: var(--patient-text-body);
+  font-family: var(--patient-font-sans);
+  position: relative;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+/* Main Area (Header + Scrollable Content) */
+.miora-patient-main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  min-height: 100vh;
+  background: var(--patient-bg);
+  position: relative;
+}
+
+/* -----------------------------------------------------------------------------
+   Shared Top Header
+   ----------------------------------------------------------------------------- */
+.miora-patient-header {
+  height: var(--patient-header-height);
+  min-height: var(--patient-header-height);
+  background: var(--patient-header-bg);
+  border-bottom: 1px solid var(--patient-header-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  box-sizing: border-box;
+}
+
+.patient-header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--patient-text-muted);
+}
+
+.patient-header-current-badge {
+  font-weight: 600;
+  color: var(--patient-text-primary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.patient-header-tagline {
+  font-size: 11.5px;
+  color: var(--patient-text-subtle);
+  border-left: 1px solid var(--patient-border);
+  padding-left: 10px;
+  margin-left: 6px;
+}
+
+.patient-header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Notification Bell Button & Dropdown */
+.patient-header-notif-wrap {
+  position: relative;
+}
+
+.patient-header-icon-btn {
+  background: #ffffff;
+  border: 1px solid var(--patient-border);
+  border-radius: var(--patient-radius-pill);
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--patient-text-body);
+  position: relative;
+  transition: all var(--patient-transition-fast);
+}
+
+.patient-header-icon-btn:hover {
+  background: var(--patient-primary-subtle);
+  border-color: var(--patient-primary);
+  color: var(--patient-primary);
+}
+
+.patient-notif-unread-dot {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--patient-primary);
+  box-shadow: 0 0 0 2px #ffffff;
+}
+
+.patient-header-dropdown {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  background: #ffffff;
+  border: 1px solid var(--patient-border);
+  border-radius: var(--patient-radius-md);
+  box-shadow: var(--patient-shadow-dropdown);
+  min-width: 240px;
+  max-width: 320px;
+  z-index: 50;
+  overflow: hidden;
+  animation: patientDropdownFade 150ms ease-out;
+}
+
+@keyframes patientDropdownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.patient-dropdown-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--patient-border-subtle);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--patient-text-primary);
+  background: var(--patient-primary-subtle);
+}
+
+.patient-dropdown-link-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 11px;
+  color: var(--patient-primary);
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.patient-dropdown-link-btn:hover {
+  text-decoration: underline;
+}
+
+.patient-notif-list {
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.patient-notif-item {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--patient-border-subtle);
+  cursor: pointer;
+  transition: background var(--patient-transition-fast);
+}
+
+.patient-notif-item:hover {
+  background: var(--patient-primary-subtle);
+}
+
+.patient-notif-item.is-unread {
+  background: #fff8fa;
+}
+
+.patient-notif-item-title {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--patient-text-primary);
+  margin-bottom: 2px;
+}
+
+.patient-notif-item-msg {
+  display: block;
+  font-size: 11px;
+  color: var(--patient-text-muted);
+  line-height: 1.35;
+}
+
+.patient-notif-empty {
+  padding: 18px 14px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--patient-text-subtle);
+}
+
+/* User Profile Pill */
+.patient-header-profile-wrap {
+  position: relative;
+}
+
+.patient-header-profile-btn {
+  background: #ffffff;
+  border: 1px solid var(--patient-border);
+  border-radius: var(--patient-radius-pill);
+  padding: 3px 10px 3px 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all var(--patient-transition-fast);
+}
+
+.patient-header-profile-btn:hover {
+  border-color: var(--patient-primary);
+  background: var(--patient-primary-subtle);
+}
+
+.patient-header-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--patient-primary);
+  color: #ffffff;
+  font-size: 11.5px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.patient-header-name {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--patient-text-primary);
+}
+
+.patient-profile-menu-meta {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--patient-border-subtle);
+  background: var(--patient-primary-subtle);
+}
+
+.patient-profile-meta-name {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--patient-text-primary);
+}
+
+.patient-profile-meta-email {
+  display: block;
+  font-size: 11px;
+  color: var(--patient-text-muted);
+  margin-top: 1px;
+}
+
+.patient-profile-menu-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  font-size: 12px;
+  color: var(--patient-text-body);
+  text-decoration: none;
+  transition: all var(--patient-transition-fast);
+}
+
+.patient-profile-menu-link:hover {
+  background: var(--patient-primary-subtle);
+  color: var(--patient-primary);
+}
+
+.patient-profile-menu-link.is-danger {
+  color: var(--patient-primary);
+  font-weight: 600;
+  border-top: 1px solid var(--patient-border-subtle);
+}
+
+/* -----------------------------------------------------------------------------
+   Content Viewport & Legacy Shielding
+   ----------------------------------------------------------------------------- */
+.miora-patient-content {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Suppress redundant legacy sidebars inside the shared layout content */
+.miora-patient-content aside,
+.miora-patient-content aside.miora-unified-sidebar,
+.miora-patient-content aside.miora-results-sidebar,
+.miora-patient-content aside.miora-reports-sidebar,
+.miora-patient-content aside.miora-care-sidebar,
+.miora-patient-content aside.companion-sidebar {
+  display: none !important;
+}
+
+/* Flatten legacy page shells so they fit the content viewport */
+.miora-patient-content > .medhist-page-shell,
+.miora-patient-content > .miora-screening-shell,
+.miora-patient-content > .miora-results-shell,
+.miora-patient-content > .miora-reports-shell,
+.miora-patient-content > .miora-care-shell,
+.miora-patient-content > .miora-companion-shell {
+  display: block !important;
+  width: 100% !important;
+  min-height: auto !important;
+  background: transparent !important;
+  overflow: visible !important;
+}
+
+.miora-patient-content .medhist-main-viewport,
+.miora-patient-content .miora-screening-viewport,
+.miora-patient-content .miora-results-viewport,
+.miora-patient-content .miora-reports-viewport,
+.miora-patient-content .miora-care-viewport,
+.miora-patient-content .companion-viewport {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Suppress legacy redundant user controls in sub-headers */
+.miora-patient-content .screening-user-controls,
+.miora-patient-content .results-user-controls,
+.miora-patient-content .reports-header-actions,
+.miora-patient-content .companion-top-right,
+.miora-patient-content .medhist-header-right {
+  display: none !important;
+}
